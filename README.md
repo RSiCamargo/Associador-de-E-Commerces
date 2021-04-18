@@ -15,10 +15,10 @@ O problema de visibilidade de produtos de e-commerce, principalmente de empresas
 
 _Forneça uma descrição dos papéis ou persona envolvidos ou interessados no projeto._
 
-| Nome                |                                                                    Descrição                                                                     |
-| ------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------: |
-| Anunciante          | É a pessoa ou empresa que tem como função expor o catálogo de produtos (Associados a seu perfil de negócio) para o público (Potencial Comprador. |
-| Potencial Comprador |        É a pessoa que fará a visita regular ao Website, com o intuito de procurar novos produtos ou marcas dos quais pode se interessar.         |
+| Nome                |                                                                     Descrição                                                                     |
+| ------------------- | :-----------------------------------------------------------------------------------------------------------------------------------------------: |
+| Anunciante          | É a pessoa ou empresa que tem como função expor o catálogo de produtos (Associados a seu perfil de negócio) para o público (Potencial Comprador). |
+| Potencial Comprador |         É a pessoa que fará a visita regular ao Website, com o intuito de procurar novos produtos ou marcas dos quais pode se interessar.         |
 
 ## 3. Product Backlog
 
