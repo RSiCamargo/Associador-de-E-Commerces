@@ -1,6 +1,4 @@
-# NOME DO PRODUTO
-
-E - Mall
+# E - MALL
 
 ## Equipe
 
