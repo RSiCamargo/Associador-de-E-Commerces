@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" />
+        <link rel="shortcut icon" href="" type="image/x-icon">
+        <link
+            href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap"
+            rel="stylesheet"
+        />
+        <title>E - Mall | Login</title>
+
+        <script defer src="script.js"></script>
+        <script src="https://kit.fontawesome.com/7b49d66dbc.js" crossorigin="anonymous"></script>
+        <style> 
+            .checkbox-teal [type="checkbox"]:checked+label:before {
+                border-color: transparent #009688 #009688 transparent;
+            }
+        </style>
+</head>
+<body>
+        <form class="container p-3 my-5 border" style="width: 35rem;border-radius: 1rem;">
+            <div class="mb-3" style="width: 30rem;">
+                <h2>Realizar Login</h2>
+                <label for="exampleInputEmail1" class="form-label">Endereço de E-mail</label>
+                <input type="email" class="form-control shadow-none" style="border-color: grey;" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Senha</label>
+                <input type="password" class="form-control shadow-none" style="border-color: grey;" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3 form-check checkbox-teal">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" >
+                <label class="form-check-label" for="exampleCheck1">Lembrar conta</label>
+                </div>
+                <button type="submit" class="btn btn-secondary shadow-none">Enviar</button>
+                <p class="text-center mt-5">Ainda não possui conta? <a href="#">Registre aqui</a></p>
+        </form>
+
+</body>
+</html>
