@@ -28,14 +28,15 @@
                 border-color: transparent #009688 #009688 transparent;
             }
             body{
-                background-image: linear-gradient(to left, #eae7dc, white);
+                background-image: linear-gradient(to left, #e8d38a, white);
             }
+            
         </style>
 </head>
 <body>
     <header>
         <div id="login" style="display: display;">
-            <form class="container p-3 my-5 border" style="width: 35rem;border-radius: 1rem;">
+            <form class="container p-3 my-5 border bg-light" style="width: 35rem;border-radius: 1rem;">
                 <div class="mb-3" style="width: 30rem;">
                     <h2>Realizar Login</h2>
                     <label for="exampleInputEmail1" class="form-label">Endereço de E-mail</label>
@@ -54,27 +55,28 @@
         </div>
     </header>
         <div id="CriaConta" style="display: none;">
-            <form class="container p-3 my-5 border" style="width: 35rem;border-radius: 1rem;">
+            <form class="container p-3 my-5 border bg-light" style="width: 35rem;border-radius: 1rem;">
                 <div class="mb-3" style="width: 30rem;">
                     <h2>Criar sua conta</h2>
-                    <label for="campo-nome" class="form-label">Nome completo</label>
+                    <label for="campo-nome" class="form-label ">Nome completo</label>
                     <input type="text" class="form-control shadow-none" style="border-color: grey;" id="campo-nome" aria-describedby="campo-nome">
                     <label for="campo-nome_usuario" class="form-label">Nome de usuário</label>
                     <input type="text" class="form-control shadow-none" style="border-color: grey;" id="campo-nome_usuario" aria-describedby="campo-nome_usuario">
                     <label for="campo-email" class="form-label">Endereço de E-mail</label>
                     <input type="email" class="form-control shadow-none" style="border-color: grey;" id="campo-email" aria-describedby="campo-email">
                     <label for="campo-data" class="form-label">Data de nascimento</label>
-                    <input type="date" class="form-control shadow-none" style="border-color: grey;" id="campo-nome" aria-describedby="campo-data>
+                    <input type="date" class="form-control shadow-none" style="border-color: grey;" id="campo-nome" aria-describedby="campo-data">
                     <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Senha</label>
-                    <input type="password" class="form-control shadow-none" style="border-color: grey;" id="exampleInputPassword1">
+                        <label for="campo-senha" class="form-label">Senha</label>
+                        <input type="password" class="form-control shadow-none" style="border-color: grey;" id="campo-senha">
                     </div>
-                    <div class="mb-3 form-check checkbox-teal">
-                    <input type="checkbox" class="form-check-input shadow-none" id="exampleCheck1" >
-                    <label class="form-check-label" for="exampleCheck1">Lembrar conta</label>
+                    <div class="mb-3">
+                        <label for="campo-senha2" class="form-label">Digite a senha novamente</label>
+                        <input type="password" class="form-control shadow-none" style="border-color: grey;" id="campo-senha2">
                     </div>
-                    <button type="submit" class="btn btn-secondary shadow-none">Enviar</button>
-                    <p class="text-left mt-5"><a href="#" onclick="ShowLogin()" >Voltar</a></p>
+                    <button type="submit" class="btn btn-secondary shadow-none">Registrar</button>
+                    <p class="text-left mt-5"><a href="#" onclick="ShowLogin();" >Voltar</a></p>
+                </div>
             </form>
         </div>
 </body>
