@@ -25,8 +25,11 @@ const toSearchSection = () => {
     searchSection.classList.remove('d-none');
     homeSection.classList.add('d-none');
     couponSection.classList.add('d-none');
+
+    searchTag = document.getElementById('searchInput').value;
 }
 
+//Visualizar Cupons
 const toCouponSection = () => {
     searchSection.classList.add('d-none');
     homeSection.classList.add('d-none');
@@ -34,13 +37,17 @@ const toCouponSection = () => {
 }
 
 
-
 // --- BOTÕES ---
 btnHome.addEventListener('click', toHomeSection);
 btnSearch.addEventListener('click', toSearchSection);
-
-
-
-
-
 btnCoupon.addEventListener('click', toCouponSection);
+
+
+
+//Objeto Teste
+const objTeste = {
+    objTitle: 'Camiseta Branca',
+    objPrice: ('R$' + 85.90),
+    objDesc: 'Uma Camiseta branca normal',
+    tags: ['camiseta', 'branca', 'camisetas'],
+};
