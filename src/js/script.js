@@ -3,11 +3,13 @@
 const objTeste = {
     objId: 123123,
     objTitle: 'Camiseta Branca',
-    objPrice: ('R$' + 85.90),
+    objPrice: 85.90,
     objDesc: 'Uma Camiseta branca normal',
     tags: ['camiseta', 'branca', 'camisetas'],
     coverImage: './src/img/camisetaTeste.png',
 };
+
+// ! ADD Refresh
 
 // --- ELEMENTOS ---
 const homeSection = document.getElementById('home-section');
@@ -70,17 +72,38 @@ const createItem = (coverImage, title, price) => {
     
     var imgProd = document.createElement("img");
     imgProd.style.width = "20rem";
-    imgProd.style.height = "25rem";
-    imgProd.style.padding = "4rem 2rem";
+    imgProd.style.height = "23rem";
+    imgProd.style.padding = "3rem 2rem";
     imgProd.setAttribute("src", coverImage);
+    imgProd.setAttribute("href", "#");
     div.appendChild(imgProd);
 
     var divInfo = document.createElement("div");
     divInfo.style.width = "20rem";
-    divInfo.style.height = "7rem";
-    divInfo.style.backgroundColor = "blue";
-    divInfo.style.padding = "2rem";
+    divInfo.style.height = "9rem";
+    divInfo.style.padding = "1rem 2rem";
     div.appendChild(divInfo);
+
+    var divDesc = document.createElement("div");
+    divDesc.style.width = "100%";
+    divDesc.style.height = "2rem";
+    divDesc.style.color = "black";
+    divDesc.style.display = "flex";
+    divDesc.style.justifyContent = "center";
+    imgProd.setAttribute("href", "#");
+    divDesc.innerHTML = title;
+    divInfo.appendChild(divDesc);
+
+    var divPrice = document.createElement("div");
+    divPrice.style.width = "100%";
+    divPrice.style.height = "2rem";
+    divPrice.style.margin = "1rem 0rem";
+    divPrice.style.color = "black";
+    divPrice.style.display = "flex";
+    divPrice.style.justifyContent = "center";
+    imgProd.setAttribute("href", "#");
+    divPrice.innerHTML = "R$" + Math.floor(price) + "," + ((price % Math.floor(price) * 100).toFixed(0));
+    divInfo.appendChild(divPrice);
 }
 
 
