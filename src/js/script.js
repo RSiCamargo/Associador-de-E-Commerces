@@ -63,7 +63,7 @@ const addSearchResults = (param) => {
 }
 
 //Criar objeto buscado
-const createItem = (coverImage, title, price) => {
+const createItem = (coverImage, title, price) => { 
     var div = document.createElement("div");
     div.style.width = "20rem";
     div.style.height = "32rem";
