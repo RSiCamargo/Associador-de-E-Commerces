@@ -19,6 +19,8 @@ let objDB = [{
     tags: ['camiseta', 'branca', 'camisetas'],
     coverImage: './src/img/camisetaTeste.png',
 }];
+//Obj de itens encontrados na pesquisa
+//Vetor com tags buscadas
 
 
 // --- FUNÇÕES ---
@@ -32,20 +34,23 @@ const toHomeSection = () => {
 //Visualizar pesquisa
 const toSearchSection = () => {
     searchTag = (document.getElementById('searchInput').value).toLowerCase();
+    //Mudar para multiplas tags (separacao de frases buscadas)
     if (searchTag != ""){
         searchSection.classList.remove('d-none');
         homeSection.classList.add('d-none');
         couponSection.classList.add('d-none');
     
         addSearchResults(searchTag);
-        //window.location.reload();
+        //Criar funcao para limpar busca anterior
     }  
 }
+
 //Permitir apenas letras no campo nome
 function ValidarLetras() {
     let campo = document.getElementById('campo-nome');
     campo.value = campo.value.replace(/[^a-zA-Z]+/, '');
-  };
+}
+
 //Verificar senhas 
 function verificarSenha(){
     let senha1 = document.getElementById('campo-senha').value;
@@ -55,6 +60,7 @@ function verificarSenha(){
             alert("A confirmação de senha deve ser igual a senha digitada");
     else return true;
 }
+
 //Verifica os campos de cadastro
 function validaCadastro(){
     let nome = document.getElementById('campo-nome').value;
@@ -68,6 +74,7 @@ function validaCadastro(){
     else if(verificarSenha() == true)
         cadastrarConta();
 }
+
 //teste de criar conta
 function cadastrarConta(){
     let nome = document.getElementById('campo-nome').value;
@@ -86,7 +93,6 @@ function cadastrarConta(){
         localStorage.setItem("contas", JSON.stringify(contas));
         alert("Conta cadastrada com sucesso!");
     }
-
 }
 
 //Visualizar Cupons
