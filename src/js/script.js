@@ -43,6 +43,30 @@ const toSearchSection = () => {
         addSearchResults(searchTag);   
     }  
 }
+//Permitir apenas letras no campo nome
+function ValidarLetras() {
+    let campo = document.getElementById('campo-nome');
+    campo.value = campo.value.replace(/[^a-zA-Z]+/, '');
+  };
+//Verificar senhas 
+function verificarSenha(){
+    let senha1 = document.getElementById('campo-senha').value;
+    let senha2 = document.getElementById('campo-senha2').value;
+
+    if(senha1 != senha2)
+            alert("A confirmação de senha deve ser igual a senha digitada");
+}
+//teste de criar conta
+fuction cadastrarConta(){
+    let nome = document.getElementById('campo-nome').value;
+    let usuario = document.getElementById('campo-usuario').value;
+    let email = document.getElementById('campo-email').value;
+    let datanasc = document.getElementById('campo-data').value;
+    let senha = document.getElementById('campo-senha').value;
+
+    let novaConta = {}
+
+}
 
 //Visualizar Cupons
 const toCouponSection = () => {

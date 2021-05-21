@@ -11,7 +11,7 @@
         />
         <title>E - Mall | Login</title>
 
-        <script defer src="script.js"></script>
+        <script src="../js/script.js"></script>
         <script src="https://kit.fontawesome.com/7b49d66dbc.js" crossorigin="anonymous"></script>
         <script>
             function ShowCriarConta(){
@@ -40,10 +40,10 @@
                 <div class="mb-3" style="width: 30rem;">
                     <h2>Realizar Login</h2>
                     <label for="exampleInputEmail1" class="form-label">Endereço de E-mail</label>
-                    <input type="email" class="form-control shadow-none" style="border-color: grey;" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <input type="email" required class="form-control shadow-none" style="border-color: grey;" id="exampleInputEmail1" aria-describedby="emailHelp">
                     <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Senha</label>
-                    <input type="password" class="form-control shadow-none" style="border-color: grey;" id="exampleInputPassword1">
+                    <input type="password" required class="form-control shadow-none" style="border-color: grey;" id="exampleInputPassword1">
                     </div>
                     <div class="mb-3 form-check checkbox-teal">
                     <input type="checkbox" class="form-check-input shadow-none" id="exampleCheck1" >
@@ -60,22 +60,22 @@
                 <div class="mb-3" style="width: 30rem;">
                     <h2>Criar sua conta</h2>
                     <label for="campo-nome" class="form-label ">Nome completo</label>
-                    <input type="text" class="form-control shadow-none" style="border-color: grey;" id="campo-nome" aria-describedby="campo-nome">
+                    <input type="text" required onkeyup="ValidarLetras()" class="form-control shadow-none" style="border-color: grey;" id="campo-nome" aria-describedby="campo-nome">
                     <label for="campo-nome_usuario" class="form-label">Nome de usuário</label>
-                    <input type="text" class="form-control shadow-none" style="border-color: grey;" id="campo-nome_usuario" aria-describedby="campo-nome_usuario">
+                    <input type="text" required class="form-control shadow-none" style="border-color: grey;" id="campo-usuario" aria-describedby="campo-usuario">
                     <label for="campo-email" class="form-label">Endereço de E-mail</label>
-                    <input type="email" class="form-control shadow-none" style="border-color: grey;" id="campo-email" aria-describedby="campo-email">
+                    <input type="email" required class="form-control shadow-none" style="border-color: grey;" id="campo-email" aria-describedby="campo-email">
                     <label for="campo-data" class="form-label">Data de nascimento</label>
-                    <input type="date" class="form-control shadow-none" style="border-color: grey;" id="campo-nome" aria-describedby="campo-data">
+                    <input type="date" required class="form-control shadow-none" style="border-color: grey;" id="campo-datanasc" aria-describedby="campo-data">
                     <div class="mb-3">
                         <label for="campo-senha" class="form-label">Senha</label>
-                        <input type="password" class="form-control shadow-none" style="border-color: grey;" id="campo-senha">
+                        <input type="password" required class="form-control shadow-none" style="border-color: grey;" id="campo-senha">
                     </div>
                     <div class="mb-3">
                         <label for="campo-senha2" class="form-label">Digite a senha novamente</label>
-                        <input type="password" class="form-control shadow-none" style="border-color: grey;" id="campo-senha2">
+                        <input type="password" required class="form-control shadow-none" style="border-color: grey;" id="campo-senha2">
                     </div>
-                    <button type="submit" class="btn btn-secondary shadow-none">Registrar</button>
+                    <button type="submit" class="btn btn-secondary shadow-none" onclick="verificarSenha()">Registrar</button>
                     <p class="text-left mt-5"><a href="#" onclick="ShowLogin();" >Voltar</a></p>
                 </div>
             </form>
