@@ -53,6 +53,20 @@ function verificarSenha(){
 
     if(senha1 != senha2)
             alert("A confirmação de senha deve ser igual a senha digitada");
+    else return true;
+}
+//Verifica os campos de cadastro
+function validaCadastro(){
+    let nome = document.getElementById('campo-nome').value;
+    let usuario = document.getElementById('campo-usuario').value;
+    let email = document.getElementById('campo-email').value;
+    let datanasc = document.getElementById('campo-datanasc').value;
+    let senha = document.getElementById('campo-senha').value;
+
+    if(nome == "" || usuario == "" || email == "" || datanasc == "" || senha == "")
+        alert("Todos os campos devem ser preenchidos");
+    else if(verificarSenha() == true)
+        cadastrarConta();
 }
 //teste de criar conta
 function cadastrarConta(){

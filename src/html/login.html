@@ -24,9 +24,6 @@
             }
         </script>
         <style> 
-            .checkbox-teal [type="checkbox"]:checked+label:before {
-                border-color: transparent #009688 #009688 transparent;
-            }
             body{
                 background-image: linear-gradient(to left, #e8d38a, white);
             }
@@ -56,27 +53,31 @@
         </div>
     </header>
         <div id="CriaConta" style="display: none;">
-            <form class="container p-3 my-5 border bg-light" style="width: 35rem;border-radius: 1rem;">
-                <div class="mb-3" style="width: 30rem;">
+            <form class="needs-validation" novalidate>
+                <div class="container p-3 my-5 border bg-light" style="width: 35rem;border-radius: 1rem;">
                     <h2>Criar sua conta</h2>
-                    <label for="campo-nome" class="form-label ">Nome completo</label>
-                    <input type="text" required onkeyup="ValidarLetras()" class="form-control shadow-none" style="border-color: grey;" id="campo-nome" aria-describedby="campo-nome">
-                    <label for="campo-nome_usuario" class="form-label">Nome de usuário</label>
-                    <input type="text" required class="form-control shadow-none" style="border-color: grey;" id="campo-usuario" aria-describedby="campo-usuario">
-                    <label for="campo-email" class="form-label">Endereço de E-mail</label>
-                    <input type="email" required class="form-control shadow-none" style="border-color: grey;" id="campo-email" aria-describedby="campo-email">
-                    <label for="campo-data" class="form-label">Data de nascimento</label>
-                    <input type="date" required class="form-control shadow-none" style="border-color: grey;" id="campo-datanasc" aria-describedby="campo-data">
-                    <div class="mb-3">
-                        <label for="campo-senha" class="form-label">Senha</label>
-                        <input type="password" required class="form-control shadow-none" style="border-color: grey;" id="campo-senha">
-                    </div>
-                    <div class="mb-3">
-                        <label for="campo-senha2" class="form-label">Digite a senha novamente</label>
-                        <input type="password" required class="form-control shadow-none" style="border-color: grey;" id="campo-senha2">
-                    </div>
-                    <button type="submit" class="btn btn-secondary shadow-none" onclick="verificarSenha(); cadastrarConta();">Registrar</button>
-                    <p class="text-left mt-5"><a href="#" onclick="ShowLogin();" >Voltar</a></p>
+                        <label for="campo-nome" class="form-label ">Nome completo</label>
+                        <input type="text" required onkeyup="ValidarLetras()" class="form-control shadow-none" style="border-color: grey;" id="campo-nome" aria-describedby="campo-nome">
+                        <div class="invalid-feedback">Please choose a username.</div>
+
+                        
+                        
+                        <label for="campo-nome_usuario" class="form-label">Nome de usuário</label>
+                        <input type="text" required class="form-control shadow-none" style="border-color: grey;" id="campo-usuario" aria-describedby="campo-usuario">
+                        <label for="campo-email" class="form-label">Endereço de E-mail</label>
+                        <input type="email" required class="form-control shadow-none" style="border-color: grey;" id="campo-email" aria-describedby="campo-email">
+                        <label for="campo-data" class="form-label">Data de nascimento</label>
+                        <input type="date" required class="form-control shadow-none" style="border-color: grey;" id="campo-datanasc" aria-describedby="campo-data">
+                        <div class="mb-3">
+                            <label for="campo-senha" class="form-label">Senha</label>
+                            <input type="password" required class="form-control shadow-none" style="border-color: grey;" id="campo-senha">
+                        </div>
+                        <div class="mb-3">
+                            <label for="campo-senha2" class="form-label">Digite a senha novamente</label>
+                            <input type="password" required class="form-control shadow-none" style="border-color: grey;" id="campo-senha2">
+                        </div>
+                        <button type="submit" class="btn btn-secondary shadow-none" onclick="validaCadastro();">Registrar</button>
+                        <p class="text-left mt-5"><a href="#" onclick="ShowLogin();" >Voltar</a></p>
                 </div>
             </form>
         </div>
