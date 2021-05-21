@@ -57,14 +57,23 @@ function verificarSenha(){
             alert("A confirmação de senha deve ser igual a senha digitada");
 }
 //teste de criar conta
-fuction cadastrarConta(){
+function cadastrarConta(){
     let nome = document.getElementById('campo-nome').value;
     let usuario = document.getElementById('campo-usuario').value;
     let email = document.getElementById('campo-email').value;
-    let datanasc = document.getElementById('campo-data').value;
+    let datanasc = document.getElementById('campo-datanasc').value;
     let senha = document.getElementById('campo-senha').value;
 
-    let novaConta = {}
+    let novaConta = {Nome:nome, Usuario:usuario, Email:email, Data:datanasc, Senha:senha};
+
+    if(typeof(Storage) !== "undefined"){
+        let contas = localStorage.getItem("contas");
+        if(contas == null) contas = [];
+        else contas = JSON.parse(contas);
+        contas.push(novaConta);
+        localStorage.setItem("contas", JSON.stringify(contas));
+        alert("Conta cadastrada com sucesso!");
+    }
 
 }
 
