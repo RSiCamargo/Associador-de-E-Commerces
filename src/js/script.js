@@ -1,15 +1,5 @@
 'use-strict';
-//Objeto Teste
-const objTeste = {
-    objId: 123123,
-    objTitle: 'Camiseta Branca',
-    objPrice: 85.90,
-    objDesc: 'Uma Camiseta branca normal',
-    tags: ['camiseta', 'branca', 'camisetas'],
-    coverImage: './src/img/camisetaTeste.png',
-};
-
-// ! ADD Refresh
+//!ADD Refresh
 
 // --- ELEMENTOS ---
 const homeSection = document.getElementById('home-section');
@@ -21,7 +11,14 @@ const btnCoupon = document.querySelector('.btn_coupon');
 
 // --- VARIÁVEIS ---
 let searchTag;
-let objDB = [];
+let objDB = [{
+    objId: 1,
+    objTitle: 'Camiseta Branca',
+    objPrice: 85.90,
+    objDesc: 'Uma Camiseta branca normal',
+    tags: ['camiseta', 'branca', 'camisetas'],
+    coverImage: './src/img/camisetaTeste.png',
+}];
 
 
 // --- FUNÇÕES ---
@@ -34,13 +31,14 @@ const toHomeSection = () => {
 
 //Visualizar pesquisa
 const toSearchSection = () => {
-    searchTag = document.getElementById('searchInput').value;
+    searchTag = (document.getElementById('searchInput').value).toLowerCase();
     if (searchTag != ""){
         searchSection.classList.remove('d-none');
         homeSection.classList.add('d-none');
         couponSection.classList.add('d-none');
     
-        addSearchResults(searchTag);   
+        addSearchResults(searchTag);
+        //window.location.reload();
     }  
 }
 //Permitir apenas letras no campo nome
@@ -57,7 +55,7 @@ function verificarSenha(){
             alert("A confirmação de senha deve ser igual a senha digitada");
 }
 //teste de criar conta
-fuction cadastrarConta(){
+function cadastrarConta(){
     let nome = document.getElementById('campo-nome').value;
     let usuario = document.getElementById('campo-usuario').value;
     let email = document.getElementById('campo-email').value;
@@ -77,13 +75,14 @@ const toCouponSection = () => {
 
 //Adicionar resultados da pesquisa
 const addSearchResults = (param) => {
-    // Realizar pesquisa no banco de objetos (objDB) com o parametro entrado (tag)
-    // Em seguida rodar a funcao abaixo para cada objeto encontrado
-    // createItem(objDB[i].id, objDB[i].Title, objDB[i].Price, objDB[i].Desc, objDB[i].coverImage);
-
-    // Teste
-    createItem(objTeste.coverImage, objTeste.objTitle, objTeste.objPrice);
-
+    for(let i = 0 ; i < objDB.length ; i++){
+        for(let t = 0 ; t < objDB[i].tags.length ; t++){
+            if((objDB[i].tags[t]).toLowerCase() == param){
+                createItem(objDB[i].coverImage, objDB[i].objTitle, objDB[i].objPrice);
+                break;
+            }
+        }
+    }
 }
 
 //Criar objeto buscado
