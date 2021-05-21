@@ -70,7 +70,7 @@ function validaCadastro(){
     let senha = document.getElementById('campo-senha').value;
 
     if(nome == "" || usuario == "" || email == "" || datanasc == "" || senha == "")
-        alert("Todos os campos devem ser preenchidos");
+        false;
     else if(verificarSenha() == true)
         cadastrarConta();
 }
@@ -94,6 +94,8 @@ function cadastrarConta(){
         alert("Conta cadastrada com sucesso!");
     }
 }
+//Cria as div de perfil
+
 
 //Visualizar Cupons
 const toCouponSection = () => {
