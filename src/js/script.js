@@ -64,10 +64,11 @@ function validaCadastro(){
     let senha = document.getElementById('campo-senha').value;
 
     if(nome == "" || usuario == "" || email == "" || datanasc == "" || senha == "")
-        alert("Todos os campos devem ser preenchidos");
+        false;
     else if(verificarSenha() == true)
         cadastrarConta();
 }
+
 //teste de criar conta
 function cadastrarConta(){
     let nome = document.getElementById('campo-nome').value;
@@ -86,8 +87,9 @@ function cadastrarConta(){
         localStorage.setItem("contas", JSON.stringify(contas));
         alert("Conta cadastrada com sucesso!");
     }
-
 }
+//Cria as div de perfil
+
 
 //Visualizar Cupons
 const toCouponSection = () => {
