@@ -10,7 +10,7 @@ const btnSearch = document.querySelector('.btn_search');
 const btnCoupon = document.querySelector('.btn_coupon');
 
 // --- VARIÁVEIS ---
-let searchTag = []; //Vetor com tags buscadas
+let tagArr = []; //Vetor com tags buscadas
 let objDB = [{
     objId: 1,
     objTitle: 'Camiseta Branca',
@@ -20,7 +20,7 @@ let objDB = [{
     coverImage: './src/img/camisetaTeste.png',
 }];
 let objSrc = []; //Obj de itens encontrados na pesquisa
-let aux = '';
+let tagString;
 
 
 
@@ -31,34 +31,25 @@ const toHomeSection = () => {
     couponSection.classList.add('d-none');
     homeSection.classList.remove('d-none');
 }
-//! ----- Arrumar vvv
+
 //Visualizar pesquisa
 const toSearchSection = () => {
-    if (searchTag.length === 1 && searchTag[0] == '')
-    window.location.reload();
-    else{
-        searchTag.push(aux.toLowerCase());
+    if (tagArr.length > 1 || tagArr[0] != ''){
+        tagString = document.getElementById("searchInput").value;
+        tagArr = tagString.split(" ");
         searchSection.classList.remove('d-none');
         homeSection.classList.add('d-none');
         couponSection.classList.add('d-none');
-        addSearchResults(searchTag);
+        addSearchResults(tagArr);
         //Criar funcao para limpar busca anterior
     }
 }
 
-//Pegar input Pesquisa
+//Habilitar pesquisa com Enter
 const srcInput = (event) => {
-
-    if(event.keyCode === 32){
-        searchTag.push(aux.toLowerCase());
-        aux = '';
-    }
-    else if (event.keyCode === 13) {
-        searchTag.push(aux.toLowerCase());
+    if (event.keyCode === 13) {
         toSearchSection();
-        aux = '';
-    }else
-        aux = aux + event.key;
+    }
  }
 
 //Adicionar resultados da pesquisa
@@ -67,7 +58,8 @@ const addSearchResults = (param) => {
         loop:
         for(let t = 0 ; t < objDB[i].tags.length ; t++){
             for(let z = 0 ; z < param.length ; z++){
-                if((objDB[i].tags[t]).toLowerCase() == param[z]){
+                if((objDB[i].tags[t]).toLowerCase() == param[z].toLowerCase()){
+                    objSrc.push(objDB[i]);
                     //Montar funcao com linha abaixo para filtragem
                     createItem(objDB[i].coverImage, objDB[i].objTitle, objDB[i].objPrice);
                     break loop;
@@ -76,7 +68,6 @@ const addSearchResults = (param) => {
         }
     }
 }
-//! ----- Arrumar ^^^
 
 //Criar objeto buscado
 const createItem = (coverImage, title, price) => { 
