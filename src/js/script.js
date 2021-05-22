@@ -10,7 +10,7 @@ const btnSearch = document.querySelector('.btn_search');
 const btnCoupon = document.querySelector('.btn_coupon');
 
 // --- VARIÁVEIS ---
-let searchTag;
+let searchTag = []; //Vetor com tags buscadas
 let objDB = [{
     objId: 1,
     objTitle: 'Camiseta Branca',
@@ -19,8 +19,9 @@ let objDB = [{
     tags: ['camiseta', 'branca', 'camisetas'],
     coverImage: './src/img/camisetaTeste.png',
 }];
-//Obj de itens encontrados na pesquisa
-//Vetor com tags buscadas
+let objSrc = []; //Obj de itens encontrados na pesquisa
+let aux = '';
+
 
 
 // --- FUNÇÕES ---
@@ -33,17 +34,33 @@ const toHomeSection = () => {
 
 //Visualizar pesquisa
 const toSearchSection = () => {
-    searchTag = (document.getElementById('searchInput').value).toLowerCase();
-    //Mudar para multiplas tags (separacao de frases buscadas)
-    if (searchTag != ""){
+    if (searchTag.length === 1 && searchTag[0] == '')
+    window.location.reload();
+    else{
+        searchTag.push(aux.toLowerCase());
         searchSection.classList.remove('d-none');
         homeSection.classList.add('d-none');
         couponSection.classList.add('d-none');
-    
         addSearchResults(searchTag);
         //Criar funcao para limpar busca anterior
-    }  
+    }
 }
+
+//Pegar input Pesquisa
+const srcInput = (event) => {
+
+    if(event.keyCode === 32){
+        searchTag.push(aux.toLowerCase());
+        aux = '';
+    }
+    else if (event.keyCode === 13) {
+        searchTag.push(aux.toLowerCase());
+        toSearchSection();
+        aux = '';
+    }else
+        aux = aux + event.key;
+ }
+
 
 //Permitir apenas letras no campo nome
 function ValidarLetras() {
@@ -107,10 +124,14 @@ const toCouponSection = () => {
 //Adicionar resultados da pesquisa
 const addSearchResults = (param) => {
     for(let i = 0 ; i < objDB.length ; i++){
+        loop:
         for(let t = 0 ; t < objDB[i].tags.length ; t++){
-            if((objDB[i].tags[t]).toLowerCase() == param){
-                createItem(objDB[i].coverImage, objDB[i].objTitle, objDB[i].objPrice);
-                break;
+            for(let z = 0 ; z < param.length ; z++){
+                if((objDB[i].tags[t]).toLowerCase() == param[z]){
+                    //Montar funcao com linha abaixo para filtragem
+                    createItem(objDB[i].coverImage, objDB[i].objTitle, objDB[i].objPrice);
+                    break loop;
+                } 
             }
         }
     }
@@ -159,8 +180,6 @@ const createItem = (coverImage, title, price) => {
     divPrice.innerHTML = "R$" + Math.floor(price) + "," + ((price % Math.floor(price) * 100).toFixed(0));
     divInfo.appendChild(divPrice);
 }
-
-
 
 // --- BOTÕES ---
 btnHome.addEventListener('click', toHomeSection);
