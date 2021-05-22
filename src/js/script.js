@@ -31,7 +31,7 @@ const toHomeSection = () => {
     couponSection.classList.add('d-none');
     homeSection.classList.remove('d-none');
 }
-
+//! ----- Arrumar vvv
 //Visualizar pesquisa
 const toSearchSection = () => {
     if (searchTag.length === 1 && searchTag[0] == '')
@@ -61,6 +61,66 @@ const srcInput = (event) => {
         aux = aux + event.key;
  }
 
+//Adicionar resultados da pesquisa
+const addSearchResults = (param) => {
+    for(let i = 0 ; i < objDB.length ; i++){
+        loop:
+        for(let t = 0 ; t < objDB[i].tags.length ; t++){
+            for(let z = 0 ; z < param.length ; z++){
+                if((objDB[i].tags[t]).toLowerCase() == param[z]){
+                    //Montar funcao com linha abaixo para filtragem
+                    createItem(objDB[i].coverImage, objDB[i].objTitle, objDB[i].objPrice);
+                    break loop;
+                } 
+            }
+        }
+    }
+}
+//! ----- Arrumar ^^^
+
+//Criar objeto buscado
+const createItem = (coverImage, title, price) => { 
+    var div = document.createElement("div");
+    div.style.width = "20rem";
+    div.style.height = "32rem";
+    div.style.backgroundColor = "white";
+    document.getElementById("searchedElements").appendChild(div);
+    
+    var imgProd = document.createElement("img");
+    imgProd.style.width = "20rem";
+    imgProd.style.height = "23rem";
+    imgProd.style.padding = "3rem 2rem";
+    imgProd.setAttribute("src", coverImage);
+    imgProd.setAttribute("href", "#");
+    div.appendChild(imgProd);
+
+    var divInfo = document.createElement("div");
+    divInfo.style.width = "20rem";
+    divInfo.style.height = "9rem";
+    divInfo.style.padding = "1rem 2rem";
+    div.appendChild(divInfo);
+
+    var divDesc = document.createElement("div");
+    divDesc.style.width = "100%";
+    divDesc.style.height = "2rem";
+    divDesc.style.color = "black";
+    divDesc.style.display = "flex";
+    divDesc.style.justifyContent = "center";
+    imgProd.setAttribute("href", "#");
+    divDesc.innerHTML = title;
+    divInfo.appendChild(divDesc);
+
+    var divPrice = document.createElement("div");
+    divPrice.style.width = "100%";
+    divPrice.style.height = "2rem";
+    divPrice.style.margin = "1rem 0rem";
+    divPrice.style.color = "black";
+    divPrice.style.display = "flex";
+    divPrice.style.justifyContent = "center";
+    imgProd.setAttribute("href", "#");
+    divPrice.innerHTML = "R$" + Math.floor(price) + "," + ((price % Math.floor(price) * 100).toFixed(0));
+    divInfo.appendChild(divPrice);
+}
 
 //Permitir apenas letras no campo nome
 function ValidarLetras() {
@@ -121,65 +181,6 @@ const toCouponSection = () => {
     couponSection.classList.remove('d-none');
 }
 
-//Adicionar resultados da pesquisa
-const addSearchResults = (param) => {
-    for(let i = 0 ; i < objDB.length ; i++){
-        loop:
-        for(let t = 0 ; t < objDB[i].tags.length ; t++){
-            for(let z = 0 ; z < param.length ; z++){
-                if((objDB[i].tags[t]).toLowerCase() == param[z]){
-                    //Montar funcao com linha abaixo para filtragem
-                    createItem(objDB[i].coverImage, objDB[i].objTitle, objDB[i].objPrice);
-                    break loop;
-                } 
-            }
-        }
-    }
-}
-
-//Criar objeto buscado
-const createItem = (coverImage, title, price) => { 
-    var div = document.createElement("div");
-    div.style.width = "20rem";
-    div.style.height = "32rem";
-    div.style.backgroundColor = "white";
-    document.getElementById("searchedElements").appendChild(div);
-    
-    var imgProd = document.createElement("img");
-    imgProd.style.width = "20rem";
-    imgProd.style.height = "23rem";
-    imgProd.style.padding = "3rem 2rem";
-    imgProd.setAttribute("src", coverImage);
-    imgProd.setAttribute("href", "#");
-    div.appendChild(imgProd);
-
-    var divInfo = document.createElement("div");
-    divInfo.style.width = "20rem";
-    divInfo.style.height = "9rem";
-    divInfo.style.padding = "1rem 2rem";
-    div.appendChild(divInfo);
-
-    var divDesc = document.createElement("div");
-    divDesc.style.width = "100%";
-    divDesc.style.height = "2rem";
-    divDesc.style.color = "black";
-    divDesc.style.display = "flex";
-    divDesc.style.justifyContent = "center";
-    imgProd.setAttribute("href", "#");
-    divDesc.innerHTML = title;
-    divInfo.appendChild(divDesc);
-
-    var divPrice = document.createElement("div");
-    divPrice.style.width = "100%";
-    divPrice.style.height = "2rem";
-    divPrice.style.margin = "1rem 0rem";
-    divPrice.style.color = "black";
-    divPrice.style.display = "flex";
-    divPrice.style.justifyContent = "center";
-    imgProd.setAttribute("href", "#");
-    divPrice.innerHTML = "R$" + Math.floor(price) + "," + ((price % Math.floor(price) * 100).toFixed(0));
-    divInfo.appendChild(divPrice);
-}
 
 // --- BOTÕES ---
 btnHome.addEventListener('click', toHomeSection);
