@@ -5,9 +5,13 @@
 const homeSection = document.getElementById('home-section');
 const searchSection = document.getElementById('search-section');
 const couponSection = document.getElementById('coupon-section');
+const profileSection = document.getElementById('profile-section');
+const ecommerceSection = document.getElementById('ecommerce-section');
 const btnHome = document.querySelector('.btn_home');
 const btnSearch = document.querySelector('.btn_search');
 const btnCoupon = document.querySelector('.btn_coupon');
+const btnProfile = document.querySelector('.btn_profile');
+const btnEcommerce = document.querySelector('.btn_ecommerce');
 
 // --- VARIÁVEIS ---
 let tagArr = []; //Vetor com tags buscadas
@@ -171,9 +175,18 @@ const toCouponSection = () => {
     homeSection.classList.add('d-none');
     couponSection.classList.remove('d-none');
 }
-
+const toProfileSection = () => {
+    toProfileSection.classList.remove('d-none');
+    toEcommerceSection.classList.add('d-none');
+}
+const toEcommerceSection = () => {
+    toProfileSection.classList.add('d-none');
+    toEcommerceSection.classList.remove('d-none');
+}
 
 // --- BOTÕES ---
 btnHome.addEventListener('click', toHomeSection);
 btnSearch.addEventListener('click', toSearchSection);
 btnCoupon.addEventListener('click', toCouponSection);
+btnProfile.addEventListener('click', toProfileSection);
+btnEcommerce.addEventListener('click', toEcommerceSection);
