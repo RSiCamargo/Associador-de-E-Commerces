@@ -9,6 +9,7 @@ const btnHome = document.querySelector('.btn_home');
 const btnSearch = document.querySelector('.btn_search');
 const btnCoupon = document.querySelector('.btn_coupon');
 
+
 // --- VARIÁVEIS ---
 let tagArr = []; //Vetor com tags buscadas
 let objDB = [{
