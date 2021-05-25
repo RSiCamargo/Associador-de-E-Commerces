@@ -5,10 +5,11 @@
 const homeSection = document.getElementById('home-section');
 const searchSection = document.getElementById('search-section');
 const couponSection = document.getElementById('coupon-section');
+const productsSection = document.getElementById('products-section');
 const btnHome = document.querySelector('.btn_home');
 const btnSearch = document.querySelector('.btn_search');
 const btnCoupon = document.querySelector('.btn_coupon');
-
+const btnProducts = document.querySelector('.btn_products');
 
 // --- VARIÁVEIS ---
 let tagArr = []; //Vetor com tags buscadas
@@ -30,6 +31,7 @@ let tagString;
 const toHomeSection = () => {
     searchSection.classList.add('d-none');
     couponSection.classList.add('d-none');
+    productsSection.classList.add('d-none');
     homeSection.classList.remove('d-none');
 }
 
@@ -41,6 +43,7 @@ const toSearchSection = () => {
         searchSection.classList.remove('d-none');
         homeSection.classList.add('d-none');
         couponSection.classList.add('d-none');
+        productsSection.classList.add('d-none');
         addSearchResults(tagArr);
         //Criar funcao para limpar busca anterior
     }
@@ -141,40 +144,107 @@ function validaCadastro(){
     if(nome == "" || usuario == "" || email == "" || datanasc == "" || senha == "")
         false;
     else if(verificarSenha() == true)
-        cadastrarConta();
+        alert("ok");
 }
+//cadastrar conta no banco
+const formAccount = document.getElementById('accounts');
 
-//teste de criar conta
-function cadastrarConta(){
-    let nome = document.getElementById('campo-nome').value;
-    let usuario = document.getElementById('campo-usuario').value;
-    let email = document.getElementById('campo-email').value;
-    let datanasc = document.getElementById('campo-datanasc').value;
-    let senha = document.getElementById('campo-senha').value;
 
-    let novaConta = {Nome:nome, Usuario:usuario, Email:email, Data:datanasc, Senha:senha};
-
-    if(typeof(Storage) !== "undefined"){
-        let contas = localStorage.getItem("contas");
-        if(contas == null) contas = [];
-        else contas = JSON.parse(contas);
-        contas.push(novaConta);
-        localStorage.setItem("contas", JSON.stringify(contas));
-        alert("Conta cadastrada com sucesso!");
+const createAccount = async (e) => {
+    e.preventDefault();
+    const doc = {
+        name: formAccount.camponome.value,
+        username: formAccount.campousuario.value,
+        email: formAccount.campoemail.value,
+        birthdate: formAccount.campodata.value,
+        password: formAccount.camposenha.value
     }
+
+    await fetch('http://localhost:3000/accounts',{
+        method: 'POST',
+        body: JSON.stringify(doc),
+        headers: {'Content-Type': 'aplication/json'}
+    });
+    
+    window.location.replace("../../index.html");
 }
-//Cria as div de perfil
+
+formAccount.addEventListener('submit', createAccount);
+
+//Carregar os produtos na pag produtos
+const divProduct = document.querySelector('.products');
+const renderProducts = async () => {
+    let uri = 'http://localhost:3000/products';
+
+    const res = await fetch(uri);
+    const products = await res.json();
+
+    let template = '';
+    products.forEach(product => {
+        template += `  
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top " src="${product.image}" >
+                <div class="card-body">
+                    <h5 class="card-title text-center">${product.title}</h5>
+                    <h5 class="card-text text-center">R$${product.price}</h5>
+                    <p class="card-text">${product.desc}</p>
+                    <a class="btn btn-secondary" href"#">Visitar</a>
+                </div>
+            </div>
+        `
+    })
+    divProduct.innerHTML = template;
+
+}
+//Carregar os produtos na pag produtos
+const divCoupon = document.querySelector('.coupons');
+const renderCoupons = async () => {
+    let uri = 'http://localhost:3000/coupons';
+
+    const res = await fetch(uri);
+    const coupons = await res.json();
+
+    let template = '';
+    coupons.forEach(coupon => {
+        template += `  
+            <div class="card" style="width: 18rem;">
+                <img class="card-img " src="${coupon.image}" >
+                <div class="card-body">
+                    <h5 class="card-title">${coupon.title}</h5>
+                    <p class="card-text">${coupon.desc}</p>
+                    <p class="card-text">Código do cupom:${coupon.cod}</p>
+                </div>
+            </div>
+        `
+    })
+    divCoupon.innerHTML = template;
+
+}
+
+//Quando todo conteudo estiver carregado, dispara a função render
+window.addEventListener('DOMContentLoaded', () => renderProducts());
+window.addEventListener('DOMContentLoaded', () => renderCoupons());
 
 
 //Visualizar Cupons
 const toCouponSection = () => {
     searchSection.classList.add('d-none');
     homeSection.classList.add('d-none');
+    productsSection.classList.add('d-none');
     couponSection.classList.remove('d-none');
 }
+//Visualizar Produtos
+const toProductsSection = () => {
+    searchSection.classList.add('d-none');
+    homeSection.classList.add('d-none');
+    couponSection.classList.add('d-none');
+    productsSection.classList.remove('d-none');
+}
+
 
 
 // --- BOTÕES ---
 btnHome.addEventListener('click', toHomeSection);
 btnSearch.addEventListener('click', toSearchSection);
 btnCoupon.addEventListener('click', toCouponSection);
+btnProducts.addEventListener('click', toProductsSection);

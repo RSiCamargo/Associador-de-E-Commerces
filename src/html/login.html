@@ -53,30 +53,30 @@
         </div>
     </header>
         <div id="CriaConta" style="display: none;">
-            <form>
                 <div class="container p-3 my-5 border bg-light" style="width: 35rem;border-radius: 1rem;">
                     <h2>Criar sua conta</h2>
+                    <form id="accounts">
                         <label for="campo-nome" class="form-label ">Nome completo</label>
-                        <input type="text" required onkeyup="ValidarLetras()" class="form-control shadow-none" style="border-color: grey;" id="campo-nome" aria-describedby="campo-nome">
+                        <input type="text" required onkeyup="ValidarLetras()" class="form-control shadow-none" style="border-color: grey;" id="campo-nome" name="camponome" >
                         <div class="invalid-feedback">Please choose a username.</div>
                         <label for="campo-nome_usuario" class="form-label">Nome de usuário</label>
-                        <input type="text" required class="form-control shadow-none" style="border-color: grey;" id="campo-usuario" aria-describedby="campo-usuario">
+                        <input type="text" required class="form-control shadow-none" style="border-color: grey;" id="campo-usuario" name="campousuario">
                         <label for="campo-email" class="form-label">Endereço de E-mail</label>
-                        <input type="email" required class="form-control shadow-none" style="border-color: grey;" id="campo-email" aria-describedby="campo-email">
+                        <input type="email" required class="form-control shadow-none" style="border-color: grey;" id="campo-email" name="campoemail">
                         <label for="campo-data" class="form-label">Data de nascimento</label>
-                        <input type="date" required class="form-control shadow-none" style="border-color: grey;" id="campo-datanasc" aria-describedby="campo-data">
+                        <input type="date" required class="form-control shadow-none" style="border-color: grey;" id="campo-datanasc" name="campodata">
                         <div class="mb-3">
                             <label for="campo-senha" class="form-label">Senha</label>
-                            <input type="password" required class="form-control shadow-none" style="border-color: grey;" id="campo-senha">
+                            <input type="password" required class="form-control shadow-none" style="border-color: grey;" id="campo-senha" name="camposenha">
                         </div>
                         <div class="mb-3">
                             <label for="campo-senha2" class="form-label">Digite a senha novamente</label>
-                            <input type="password" required class="form-control shadow-none" style="border-color: grey;" id="campo-senha2">
+                            <input type="password" required class="form-control shadow-none" style="border-color: grey;" id="campo-senha2" name="camposenha2">
                         </div>
-                        <button type="submit" class="btn btn-secondary shadow-none" onclick="validaCadastro();">Registrar</button>
+                        <button type="submit" class="btn btn-secondary btncreate shadow-none" onclick="validaCadastro();">Registrar</button>
+                        </form>
                         <p class="text-left mt-5"><a href="#" onclick="ShowLogin();" >Voltar</a></p>
                 </div>
-            </form>
         </div>
 </body>
 </html>
