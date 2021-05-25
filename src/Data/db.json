@@ -1,0 +1,28 @@
+{
+    "produtos": [
+        {
+            "id": 1,
+            "title": "Camiseta Branca",
+            "price": "85.90",
+            "desc": "Uma camiseta branca normal",
+            "tags": ["camiseta", "branca", "camisetas"],
+            "image": "./src/img/camisetaTeste.png"
+        },
+        {
+            "id": 1,
+            "title": "Camiseta Branca",
+            "price": "85.90",
+            "desc": "Uma camiseta branca normal",
+            "tags": ["camiseta", "branca", "camisetas"],
+            "image": "./src/img/camisetaTeste.png"
+        },
+        {
+            "id": 1,
+            "title": "Camiseta Branca",
+            "price": "85.90",
+            "desc": "Uma camiseta branca normal",
+            "tags": ["camiseta", "branca", "camisetas"],
+            "image": "./src/img/camisetaTeste.png"
+        }
+    ]
+}
