@@ -6,6 +6,7 @@ const homeSection = document.getElementById('home-section');
 const searchSection = document.getElementById('search-section');
 const couponSection = document.getElementById('coupon-section');
 const productsSection = document.getElementById('products-section');
+const srcProd = document.getElementById("searchedElements");
 const btnHome = document.querySelector('.btn_home');
 const btnSearch = document.querySelector('.btn_search');
 const btnCoupon = document.querySelector('.btn_coupon');
@@ -13,14 +14,15 @@ const btnProducts = document.querySelector('.btn_products');
 
 // --- VARIÁVEIS ---
 let tagArr = []; //Vetor com tags buscadas
-let objDB = [{
+/*let objDB = [{
     objId: 1,
     objTitle: 'Camiseta Branca',
     objPrice: 85.90,
     objDesc: 'Uma Camiseta branca normal',
     tags: ['camiseta', 'branca', 'camisetas'],
     coverImage: './src/img/camisetaTeste.png',
-}];
+}];*/
+let objDB = [];
 let objSrc = []; //Obj de itens encontrados na pesquisa
 let tagString;
 
@@ -65,7 +67,20 @@ const addSearchResults = (param) => {
                 if((objDB[i].tags[t]).toLowerCase() == param[z].toLowerCase()){
                     objSrc.push(objDB[i]);
                     //Montar funcao com linha abaixo para filtragem
-                    createItem(objDB[i].coverImage, objDB[i].objTitle, objDB[i].objPrice);
+                    //createItem(objDB[i].coverImage, objDB[i].objTitle, objDB[i].objPrice);
+                    let template = '';
+                    objDB.forEach(element => {
+                        template += `  
+                            <div style="width: 20rem; height: 32rem; background-color: white;">
+                                <img src="${element.image}" href="#" style="width: 20rem; height: 23rem; padding: 3rem 2rem;">
+                                <div style="width: 20rem; height: 9rem; padding: 1rem 2rem;">
+                                    <div style="width: 100%; height: 2rem; color: black; display: flex; justify-content: center;">${element.desc}</div>
+                                    <div style="width: 100%; height: 2rem; margin: 1rem 0rem; color: black; display: flex; justify-content: center;">R$${element.price}</div>
+                                </div>
+                            </div>
+                            `
+                    })
+    srcProd.innerHTML = template;
                     break loop;
                 } 
             }
@@ -169,11 +184,9 @@ const createAccount = async (e) => {
     window.location.replace("../../index.html");
 }
 
-formAccount.addEventListener('submit', createAccount);
-
 //Carregar os produtos na pag produtos
 const divProduct = document.querySelector('.products');
-const renderProducts = async () => {
+/*const renderProducts = async () => {
     let uri = 'http://localhost:3000/products';
 
     const res = await fetch(uri);
@@ -194,9 +207,27 @@ const renderProducts = async () => {
         `
     })
     divProduct.innerHTML = template;
+}*/
+const renderProducts = async () => {
+    let uri = 'http://localhost:3000/products';
 
+    const res = await fetch(uri);
+    const products = await res.json();
+    
+    products.forEach(product => {
+        objDB.push(
+            {
+            objId: product.id,
+            objTitle: product.title,
+            objPrice: product.price,
+            objDesc: product.desc,
+            tags: product.tags,
+            coverImage: product.image,
+        });
+    })
 }
-//Carregar os produtos na pag produtos
+
+//Carregar os produtos na pag cupom
 const divCoupon = document.querySelector('.coupons');
 const renderCoupons = async () => {
     let uri = 'http://localhost:3000/coupons';
