@@ -36,7 +36,42 @@
       "image": "./src/img/cupom.png",
       "desc": "Cupom de 10% de desconto para camisetas brancas.",
       "cod": "10OFFWHITE"
-    }
+    },
+    {
+        "id": 1,
+        "title": "10% OFF",
+        "image": "./src/img/cupom.png",
+        "desc": "Cupom de 10% de desconto para camisetas brancas.",
+        "cod": "10OFFWHITE"
+    },
+    {
+        "id": 1,
+        "title": "10% OFF",
+        "image": "./src/img/cupom.png",
+        "desc": "Cupom de 10% de desconto para camisetas brancas.",
+        "cod": "10OFFWHITE"
+    },
+    {
+        "id": 1,
+        "title": "10% OFF",
+        "image": "./src/img/cupom.png",
+        "desc": "Cupom de 10% de desconto para camisetas brancas.",
+        "cod": "10OFFWHITE"
+      },
+      {
+          "id": 1,
+          "title": "10% OFF",
+          "image": "./src/img/cupom.png",
+          "desc": "Cupom de 10% de desconto para camisetas brancas.",
+          "cod": "10OFFWHITE"
+      },
+      {
+          "id": 1,
+          "title": "10% OFF",
+          "image": "./src/img/cupom.png",
+          "desc": "Cupom de 10% de desconto para camisetas brancas.",
+          "cod": "10OFFWHITE"
+      }
   ],
   "products": [
     {

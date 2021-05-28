@@ -14,23 +14,16 @@ const btnProducts = document.querySelector('.btn_products');
 
 // --- VARIÁVEIS ---
 let tagArr = []; //Vetor com tags buscadas
-/*let objDB = [{
-    objId: 1,
-    objTitle: 'Camiseta Branca',
-    objPrice: 85.90,
-    objDesc: 'Uma Camiseta branca normal',
-    tags: ['camiseta', 'branca', 'camisetas'],
-    coverImage: './src/img/camisetaTeste.png',
-}];*/
-let objDB = [];
+let objDB = []; //Vetor que segura objs do banco (Possivel retirar depois)
 let objSrc = []; //Obj de itens encontrados na pesquisa
-let tagString;
+let tagString; //String de pesquisa
 
 
 
 // --- FUNÇÕES ---
 //Visualizar Home
 const toHomeSection = () => {
+    srcProd.innerHTML = "";
     searchSection.classList.add('d-none');
     couponSection.classList.add('d-none');
     productsSection.classList.add('d-none');
@@ -40,6 +33,8 @@ const toHomeSection = () => {
 //Visualizar pesquisa
 const toSearchSection = () => {
     if (tagArr.length > 1 || tagArr[0] != ''){
+        srcProd.innerHTML = "";
+        tagArr = '';
         tagString = document.getElementById("searchInput").value;
         tagArr = tagString.split(" ");
         searchSection.classList.remove('d-none');
@@ -47,8 +42,25 @@ const toSearchSection = () => {
         couponSection.classList.add('d-none');
         productsSection.classList.add('d-none');
         addSearchResults(tagArr);
-        //Criar funcao para limpar busca anterior
     }
+}
+
+//Visualizar Cupons
+const toCouponSection = () => {
+    srcProd.innerHTML = "";
+    searchSection.classList.add('d-none');
+    homeSection.classList.add('d-none');
+    productsSection.classList.add('d-none');
+    couponSection.classList.remove('d-none');
+}
+
+//Visualizar Produtos
+const toProductsSection = () => {
+    srcProd.innerHTML = "";
+    searchSection.classList.add('d-none');
+    homeSection.classList.add('d-none');
+    couponSection.classList.add('d-none');
+    productsSection.classList.remove('d-none');
 }
 
 //Habilitar pesquisa com Enter
@@ -60,27 +72,23 @@ const srcInput = (event) => {
 
 //Adicionar resultados da pesquisa
 const addSearchResults = (param) => {
+    let template = '';
     for(let i = 0 ; i < objDB.length ; i++){
         loop:
         for(let t = 0 ; t < objDB[i].tags.length ; t++){
             for(let z = 0 ; z < param.length ; z++){
                 if((objDB[i].tags[t]).toLowerCase() == param[z].toLowerCase()){
                     objSrc.push(objDB[i]);
-                    //Montar funcao com linha abaixo para filtragem
-                    //createItem(objDB[i].coverImage, objDB[i].objTitle, objDB[i].objPrice);
-                    let template = '';
-                    objDB.forEach(element => {
                         template += `  
                             <div style="width: 20rem; height: 32rem; background-color: white;">
-                                <img src="${element.image}" href="#" style="width: 20rem; height: 23rem; padding: 3rem 2rem;">
+                                <img src="${objDB[i].image}" href="#" style="width: 20rem; height: 23rem; padding: 3rem 2rem;">
                                 <div style="width: 20rem; height: 9rem; padding: 1rem 2rem;">
-                                    <div style="width: 100%; height: 2rem; color: black; display: flex; justify-content: center;">${element.desc}</div>
-                                    <div style="width: 100%; height: 2rem; margin: 1rem 0rem; color: black; display: flex; justify-content: center;">R$${element.price}</div>
+                                    <div style="width: 100%; height: 2rem; color: black; display: flex; justify-content: center;">${objDB[i].desc}</div>
+                                    <div style="width: 100%; height: 2rem; margin: 1rem 0rem; color: black; display: flex; justify-content: center;">R$${objDB[i].price}</div>
                                 </div>
                             </div>
                             `
-                    })
-    srcProd.innerHTML = template;
+                    srcProd.innerHTML = template;
                     break loop;
                 } 
             }
@@ -88,49 +96,11 @@ const addSearchResults = (param) => {
     }
 }
 
-//Criar objeto buscado
-const createItem = (coverImage, title, price) => { 
-    var div = document.createElement("div");
-    div.style.width = "20rem";
-    div.style.height = "32rem";
-    div.style.backgroundColor = "white";
-    document.getElementById("searchedElements").appendChild(div);
-    
-    var imgProd = document.createElement("img");
-    imgProd.style.width = "20rem";
-    imgProd.style.height = "23rem";
-    imgProd.style.padding = "3rem 2rem";
-    imgProd.setAttribute("src", coverImage);
-    imgProd.setAttribute("href", "#");
-    div.appendChild(imgProd);
+//Filtro Valor Crescente
 
-    var divInfo = document.createElement("div");
-    divInfo.style.width = "20rem";
-    divInfo.style.height = "9rem";
-    divInfo.style.padding = "1rem 2rem";
-    div.appendChild(divInfo);
 
-    var divDesc = document.createElement("div");
-    divDesc.style.width = "100%";
-    divDesc.style.height = "2rem";
-    divDesc.style.color = "black";
-    divDesc.style.display = "flex";
-    divDesc.style.justifyContent = "center";
-    imgProd.setAttribute("href", "#");
-    divDesc.innerHTML = title;
-    divInfo.appendChild(divDesc);
+//Filtro Valor Decrescente
 
-    var divPrice = document.createElement("div");
-    divPrice.style.width = "100%";
-    divPrice.style.height = "2rem";
-    divPrice.style.margin = "1rem 0rem";
-    divPrice.style.color = "black";
-    divPrice.style.display = "flex";
-    divPrice.style.justifyContent = "center";
-    imgProd.setAttribute("href", "#");
-    divPrice.innerHTML = "R$" + Math.floor(price) + "," + ((price % Math.floor(price) * 100).toFixed(0));
-    divInfo.appendChild(divPrice);
-}
 
 //Permitir apenas letras no campo nome
 function ValidarLetras() {
@@ -280,7 +250,7 @@ const createProduct = async () => {
 }
 
 //Carregar os produtos na pag produtos
-const divProduct = document.querySelector('.products');
+/*const divProduct = document.querySelector('.products');
 const renderProducts = async () => {
     let uri = 'http://localhost:3000/products';
 
@@ -302,8 +272,8 @@ const renderProducts = async () => {
         `
     })
     divProduct.innerHTML = template;
-}
-/*const renderProducts = async () => {
+}*/
+const renderProducts = async () => {
     let uri = 'http://localhost:3000/products';
 
     const res = await fetch(uri);
@@ -312,16 +282,16 @@ const renderProducts = async () => {
     products.forEach(product => {
         objDB.push(
             {
-            objId: product.id,
-            objTitle: product.title,
-            objPrice: product.price,
-            objDesc: product.desc,
+            id: product.id,
+            title: product.title,
+            price: product.price,
+            desc: product.desc,
+            image: product.image,
             tags: product.tags,
-            coverImage: product.image,
         });
     })
 }
-*/
+
 //Carregar os produtos na pag cupom
 const divCoupon = document.querySelector('.coupons');
 const renderCoupons = async () => {
@@ -333,12 +303,12 @@ const renderCoupons = async () => {
     let template = '';
     coupons.forEach(coupon => {
         template += `  
-            <div class="card" style="width: 18rem;">
-                <img class="card-img " src="${coupon.image}" >
+            <div class="card" style="width: 20%">
+                <img src="${coupon.image}" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">${coupon.title}</h5>
-                    <p class="card-text">${coupon.desc}</p>
-                    <p class="card-text">Código do cupom:${coupon.cod}</p>
+                  <h5 class="card-title">${coupon.title}</h5>
+                  <p class="card-text">${coupon.desc}</p>
+                  <p class="card-text"><small class="text-muted">${coupon.cod}</small></p>
                 </div>
             </div>
         `
@@ -350,24 +320,6 @@ const renderCoupons = async () => {
 //Quando todo conteudo estiver carregado, dispara a função render
 window.addEventListener('DOMContentLoaded', () => renderProducts());
 window.addEventListener('DOMContentLoaded', () => renderCoupons());
-
-
-//Visualizar Cupons
-const toCouponSection = () => {
-    searchSection.classList.add('d-none');
-    homeSection.classList.add('d-none');
-    productsSection.classList.add('d-none');
-    couponSection.classList.remove('d-none');
-}
-//Visualizar Produtos
-const toProductsSection = () => {
-    searchSection.classList.add('d-none');
-    homeSection.classList.add('d-none');
-    couponSection.classList.add('d-none');
-    productsSection.classList.remove('d-none');
-}
-
-
 
 // --- BOTÕES ---
 btnHome.addEventListener('click', toHomeSection);
