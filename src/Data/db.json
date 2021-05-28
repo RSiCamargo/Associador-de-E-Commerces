@@ -1,177 +1,56 @@
 {
-    "accounts": [
-        {
-            "id": 1,
-            "name": "Giovanni M Pereira",
-            "username": "GiovanniMP",
-            "email": "giovanni@gmail.com",
-            "birthdate": "2000/01/19",
-            "password": "123"
-        }
-    ],
-    
-    "coupons": [
-        {
-            "id": 1,
-            "title": "10% OFF",
-            "image": "./src/img/cupom.png",
-            "desc": "Cupom de 10% de desconto para camisetas brancas.",
-            "cod": "10OFFWHITE"
-        }
-    ],
-    "products": [
-        {
-            "id": 1,
-            "title": "Camiseta Branca",
-            "price": "85.90",
-            "desc": "Uma camiseta branca normal.",
-            "link": "https://www.hering.com.br/store/pt/p/camiseta-basica-mangas-curtas-world-0201N0A00S1",
-            "image": "./src/img/camisetaTeste.png",
-            "tags": ["camiseta", "branca", "camisetas"]
-        },
-        {
-            "id": 2,
-            "title": "Camiseta Branca",
-            "price": "85.90",
-            "desc": "Uma camiseta branca normal.",
-            "link": "https://www.hering.com.br/store/pt/p/camiseta-basica-mangas-curtas-world-0201N0A00S1",
-            "image": "./src/img/camisetaTeste.png",
-            "tags": ["camiseta", "branca", "camisetas"] 
-        },
-        {
-            "id": 3,
-            "title": "Camiseta Branca",
-            "price": "85.90",
-            "desc": "Uma camiseta branca normal.",
-            "link": "https://www.hering.com.br/store/pt/p/camiseta-basica-mangas-curtas-world-0201N0A00S1",
-            "image": "./src/img/camisetaTeste.png",
-            "tags": ["camiseta", "branca", "camisetas"]  
-        },
-        {
-            "id": 4,
-            "title": "Camiseta Branca",
-            "price": "85.90",
-            "desc": "Uma camiseta branca normal.",
-            "link": "https://www.hering.com.br/store/pt/p/camiseta-basica-mangas-curtas-world-0201N0A00S1",
-            "image": "./src/img/camisetaTeste.png",
-            "tags": ["camiseta", "branca", "camisetas"]
-        },
-        {
-            "id": 5,
-            "title": "Camiseta Branca",
-            "price": "85.90",
-            "desc": "Uma camiseta branca normal.",
-            "link": "https://www.hering.com.br/store/pt/p/camiseta-basica-mangas-curtas-world-0201N0A00S1",
-            "image": "./src/img/camisetaTeste.png",
-            "tags": ["camiseta", "branca", "camisetas"]
-        },
-        {
-            "id": 6,
-            "title": "Camiseta Branca",
-            "price": "85.90",
-            "desc": "Uma camiseta branca normal.",
-            "link": "https://www.hering.com.br/store/pt/p/camiseta-basica-mangas-curtas-world-0201N0A00S1",
-            "image": "./src/img/camisetaTeste.png",
-            "tags": ["camiseta", "branca", "camisetas"]
-        },
-        {
-            "id": 7,
-            "title": "Camiseta Branca",
-            "price": "85.90",
-            "desc": "Uma camiseta branca normal.",
-            "link": "https://www.hering.com.br/store/pt/p/camiseta-basica-mangas-curtas-world-0201N0A00S1",
-            "image": "./src/img/camisetaTeste.png",
-            "tags": ["camiseta", "branca", "camisetas"]
-        },
-        {
-            "id": 8,
-            "title": "Camiseta Branca",
-            "price": "85.90",
-            "desc": "Uma camiseta branca normal.",
-            "link": "https://www.hering.com.br/store/pt/p/camiseta-basica-mangas-curtas-world-0201N0A00S1",
-            "image": "./src/img/camisetaTeste.png",
-            "tags": ["camiseta", "branca", "camisetas"]
-        },
-        {
-            "id": 9,
-            "title": "Camiseta Branca",
-            "price": "85.90",
-            "desc": "Uma camiseta branca normal.",
-            "link": "https://www.hering.com.br/store/pt/p/camiseta-basica-mangas-curtas-world-0201N0A00S1",
-            "image": "./src/img/camisetaTeste.png",
-            "tags": ["camiseta", "branca", "camisetas"]
-        },
-        {
-            "id": 10,
-            "title": "Camiseta Branca",
-            "price": "85.90",
-            "desc": "Uma camiseta branca normal.",
-            "link": "https://www.hering.com.br/store/pt/p/camiseta-basica-mangas-curtas-world-0201N0A00S1",
-            "image": "./src/img/camisetaTeste.png",
-            "tags": ["camiseta", "branca", "camisetas"]
-        },
-        {
-            "id": 11,
-            "title": "Camiseta Branca",
-            "price": "85.90",
-            "desc": "Uma camiseta branca normal.",
-            "link": "https://www.hering.com.br/store/pt/p/camiseta-basica-mangas-curtas-world-0201N0A00S1",
-            "image": "./src/img/camisetaTeste.png",
-            "tags": ["camiseta", "branca", "camisetas"]
-        },
-        {
-            "id": 12,
-            "title": "Camiseta Branca",
-            "price": "85.90",
-            "desc": "Uma camiseta branca normal.",
-            "link": "https://www.hering.com.br/store/pt/p/camiseta-basica-mangas-curtas-world-0201N0A00S1",
-            "image": "./src/img/camisetaTeste.png",
-            "tags": ["camiseta", "branca", "camisetas"]
-        },
-        {
-            "id": 13,
-            "title": "Camiseta Branca",
-            "price": "85.90",
-            "desc": "Uma camiseta branca normal.",
-            "link": "https://www.hering.com.br/store/pt/p/camiseta-basica-mangas-curtas-world-0201N0A00S1",
-            "image": "./src/img/camisetaTeste.png",
-            "tags": ["camiseta", "branca", "camisetas"]
-        },
-        {
-            "id": 14,
-            "title": "Camiseta Branca",
-            "price": "85.90",
-            "desc": "Uma camiseta branca normal.",
-            "link": "https://www.hering.com.br/store/pt/p/camiseta-basica-mangas-curtas-world-0201N0A00S1",
-            "image": "./src/img/camisetaTeste.png",
-            "tags": ["camiseta", "branca", "camisetas"]
-        },
-        {
-            "id": 15,
-            "title": "Camiseta Branca",
-            "price": "85.90",
-            "desc": "Uma camiseta branca normal.",
-            "link": "https://www.hering.com.br/store/pt/p/camiseta-basica-mangas-curtas-world-0201N0A00S1",
-            "image": "./src/img/camisetaTeste.png",
-            "tags": ["camiseta", "branca", "camisetas"]
-        },
-        {
-            "id": 16,
-            "title": "Camiseta Branca",
-            "price": "85.90",
-            "desc": "Uma camiseta branca normal.",
-            "link": "https://www.hering.com.br/store/pt/p/camiseta-basica-mangas-curtas-world-0201N0A00S1",
-            "image": "./src/img/camisetaTeste.png",
-            "tags": ["camiseta", "branca", "camisetas"]
-        },
-        {
-            "id": 17,
-            "title": "Camiseta Branca",
-            "price": "85.90",
-            "desc": "Uma camiseta branca normal.",
-            "link": "https://www.hering.com.br/store/pt/p/camiseta-basica-mangas-curtas-world-0201N0A00S1",
-            "image": "./src/img/camisetaTeste.png",
-            "tags": ["camiseta", "branca", "camisetas"]
-        }
-    ]
+  "ecommerces": [
+    {
+      "id": 1,
+      "name": "Dafiti",
+      "cnpj": "51.544.544/5444-44",
+      "link": "dafiti.com.br",
+      "email": "dafiti@gmail.com",
+      "phone": "(35)9 9999-9999",
+      "image": "",
+      "desc": "loja dafiti..."
+    }
+  ],
+  "accounts": [
+    {
+      "id": 1,
+      "name": "Giovanni M Pereira",
+      "username": "GiovanniMP",
+      "email": "giovanni@gmail.com",
+      "birthdate": "2000/01/19",
+      "password": "123"
+    },
+    {
+      "name": "Carlos",
+      "username": "Carlos11",
+      "email": "carlos@gmail.com",
+      "birthdate": "2021-05-05",
+      "password": "123",
+      "id": 2
+    }
+  ],
+  "coupons": [
+    {
+      "id": 1,
+      "title": "10% OFF",
+      "image": "./src/img/cupom.png",
+      "desc": "Cupom de 10% de desconto para camisetas brancas.",
+      "cod": "10OFFWHITE"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "title": "Camiseta Branca",
+      "price": "85.90",
+      "desc": "Uma camiseta branca normal.",
+      "link": "https://www.hering.com.br/store/pt/p/camiseta-basica-mangas-curtas-world-0201N0A00S1",
+      "image": "./src/img/camisetaTeste.png",
+      "tags": [
+        "camiseta",
+        "branca",
+        "camisetas"
+      ]
+    }
+  ]
 }

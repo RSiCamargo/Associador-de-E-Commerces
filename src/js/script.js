@@ -159,34 +159,129 @@ function validaCadastro(){
     if(nome == "" || usuario == "" || email == "" || datanasc == "" || senha == "")
         false;
     else if(verificarSenha() == true)
-        alert("ok");
+        createAccount();
 }
 //cadastrar conta no banco
-const formAccount = document.getElementById('accounts');
+const createAccount = async () => {
 
+    let nome = document.getElementById('campo-nome').value;
+    let usuario = document.getElementById('campo-usuario').value;
+    let email = document.getElementById('campo-email').value;
+    let datanasc = document.getElementById('campo-datanasc').value;
+    let senha = document.getElementById('campo-senha').value;
 
-const createAccount = async (e) => {
-    e.preventDefault();
+    
     const doc = {
-        name: formAccount.camponome.value,
-        username: formAccount.campousuario.value,
-        email: formAccount.campoemail.value,
-        birthdate: formAccount.campodata.value,
-        password: formAccount.camposenha.value
-    }
+        name: nome,
+        username: usuario,
+        email: email,
+        birthdate: datanasc,
+        password: senha
+    };
 
     await fetch('http://localhost:3000/accounts',{
         method: 'POST',
         body: JSON.stringify(doc),
-        headers: {'Content-Type': 'aplication/json'}
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+          }
     });
-    
+
     window.location.replace("../../index.html");
+}
+
+//Verifica os campos de cadastro de Ecommerce
+function validaCadastroEcommerce(){
+    let nome = document.getElementById('ecom-nome').value;
+    let cnpj = document.getElementById('ecom-cnpj').value;
+    let link = document.getElementById('ecom-link').value;
+    let email = document.getElementById('ecom-email').value;
+    let phone = document.getElementById('ecom-tel').value;
+    let desc = document.getElementById('ecom-desc').value;
+
+    if(nome == "" || cnpj == "" || link == "" || email == "" || phone == "" || desc == "")
+        false;
+    else createEcommerce();
+}
+//Cadastra E-commerce no banco
+const createEcommerce = async () => {
+
+    let nome = document.getElementById('ecom-nome').value;
+    let cnpj = document.getElementById('ecom-cnpj').value;
+    let link = document.getElementById('ecom-link').value;
+    let email = document.getElementById('ecom-email').value;
+    let phone = document.getElementById('ecom-tel').value;
+    let image = document.getElementById('ecom-img').value;
+    let desc = document.getElementById('ecom-desc').value;
+
+    
+    const doc = {
+        name: nome,
+        cnpj: cnpj,
+        link: link,
+        email: email,
+        phone: phone,
+        image: image,
+        desc: desc
+    };
+
+    alert(JSON.stringify(doc));
+    await fetch('http://localhost:3000/ecommerces',{
+        method: 'POST',
+        body: JSON.stringify(doc),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+          }
+    });
+
+}
+
+//Verifica os campos de cadastro de produto
+function validaCadastroProdutos(){
+    let title = document.getElementById('prod-title').value;
+    let price = document.getElementById('prod-price').value;
+    let desc = document.getElementById('prod-desc').value;
+    let link = document.getElementById('prod-link').value;
+    let image = document.getElementById('prod-img').value;
+    let tag = document.getElementById('prod-tag').value;
+
+    if(title == "" || price == "" || desc == "" || link == "" || image == "" || tag == "")
+        false;
+    else createProduct();
+}
+//Cadastra produto no banco
+const createProduct = async () => {
+
+    let title = document.getElementById('prod-title').value;
+    let price = document.getElementById('prod-price').value;
+    let desc = document.getElementById('prod-desc').value;
+    let link = document.getElementById('prod-link').value;
+    let image = document.getElementById('prod-img').value;
+    let tag = document.getElementById('prod-tag').value;
+    
+    const doc = {
+        title: title,
+        price: price,
+        desc: desc,
+        link: link,
+        image: image,
+        tags: tag
+    };
+
+    alert(JSON.stringify(doc));
+    await fetch('http://localhost:3000/products',{
+        method: 'POST',
+        body: JSON.stringify(doc),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+          }
+    });
+
 }
 
 //Carregar os produtos na pag produtos
 const divProduct = document.querySelector('.products');
-/*const renderProducts = async () => {
+const renderProducts = async () => {
     let uri = 'http://localhost:3000/products';
 
     const res = await fetch(uri);
@@ -207,8 +302,8 @@ const divProduct = document.querySelector('.products');
         `
     })
     divProduct.innerHTML = template;
-}*/
-const renderProducts = async () => {
+}
+/*const renderProducts = async () => {
     let uri = 'http://localhost:3000/products';
 
     const res = await fetch(uri);
@@ -226,7 +321,7 @@ const renderProducts = async () => {
         });
     })
 }
-
+*/
 //Carregar os produtos na pag cupom
 const divCoupon = document.querySelector('.coupons');
 const renderCoupons = async () => {

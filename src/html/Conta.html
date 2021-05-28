@@ -17,14 +17,24 @@
         function ShowProfile(){
                 document.getElementById("profile-section").style.display = "block";
                 document.getElementById("ecommerce-section").style.display = "none";
+                document.getElementById("productCreate-section").style.display = "none";
             }
         function ShowEcommerce(){
                 document.getElementById("ecommerce-section").style.display = "block";
                 document.getElementById("profile-section").style.display = "none";
+                document.getElementById("productCreate-section").style.display = "none";
+            }
+        function ShowProducts(){
+                document.getElementById("productCreate-section").style.display = "block";
+                document.getElementById("ecommerce-section").style.display = "none";
+                document.getElementById("profile-section").style.display = "none"; 
             }
     </script>
     <script type="text/javascript">
         $("#ecom-cnpj").mask("00.000.000/0000-00");
+    </script>
+    <script type="text/javascript">
+        $("#ecom-tel").mask("(00)00000-00000");
     </script>
     <title>E-mall | Conta</title>
 
@@ -53,6 +63,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" onclick="ShowEcommerce()" href="#">E-commerce</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="ShowProducts()" href="#">Cadastrar Produtos</a>
                 </li>
                 </ul>
             </div>
@@ -91,16 +104,37 @@
                 <label for="ecom-cnpj" class="form-label">CNPJ do Ecommerce</label>
                 <input type="text" required class="form-control shadow-none" name="ecom-cnpj" placeholder="99.999.999/9999-99" style="border-color: grey;" id="ecom-cnpj" >
                 <label for="ecom-site" class="form-label">Informe o site do seu Ecommerce</label>
-                <input type="url" required class="form-control shadow-none" style="border-color: grey;" id="ecom-site" >
+                <input type="url" required class="form-control shadow-none" style="border-color: grey;" id="ecom-link" >
                 <label for="ecom-email" class="form-label shadow-none">Informe o email do Ecommerce</label>
                 <input type="email" required class="form-control shadow-none" style="border-color: grey;" id="ecom-email" >
-                <label for="ecom-tel" class="form-label">Telefone (Opcional)</label>
+                <label for="ecom-tel" required class="form-label">Telefone</label>
                 <input type="tel" class="form-control shadow-none" style="border-color: grey;" id="ecom-tel">
-                <label for="ecom-img" class="form-label">Logo do Ecommerce (JPG/JPEG/PNG)</label>
-                <input type="file" required class="form-control shadow-none" style="border-color: grey;" id="ecom-img"> 
+                <label for="ecom-img" class="form-label">Logo do Ecommerce (Link)</label>
+                <input type="url" required class="form-control shadow-none" style="border-color: grey;" id="ecom-img"> 
                 <label for="ecom-text" class="form-label">Descreva o Ecommerce para os clientes</label>
-                <textarea required class="form-control shadow-none" style="border-color: grey;" id="ecom-img"></textarea>             
-                <button type="submit" class="btn btn-secondary shadow-none mt-3 mb-2" onclick="validaCadastro();">Registrar</button>
+                <textarea required class="form-control shadow-none" style="border-color: grey;" id="ecom-desc"></textarea>             
+                <button type="submit" class="btn btn-secondary shadow-none mt-3 mb-2" onclick="validaCadastroEcommerce()">Registrar</button>
+            </div>
+        </form>   
+    </section>
+    <!-- Seção Cadastrar Produtos -->
+    <section id="productCreate-section" style="display: none;height: 100vh; width: 100%; background-color: #EAEDED">
+        <form class="container justify-content-center border border-5" style="width: 50rem ;margin-top: 7rem; background-color: white;">
+            <div id="cadastro-produtos">
+                <h2>Cadastre seus produtos</h2>
+                <label for="prod-title" class="form-label ">Nome do produto</label>
+                <input type="text" required class="form-control shadow-none" style="border-color: grey;" id="prod-title" >
+                <label for="prod-price" class="form-label">Preço</label>
+                <input type="text" required class="form-control shadow-none" placeholder="R$9999.99" style="border-color: grey;" id="prod-price" >
+                <label for="prod-desc" class="form-label">Descrição do produto</label>
+                <input type="text" required class="form-control shadow-none" style="border-color: grey;" id="prod-desc" >
+                <label for="prod-link" class="form-label shadow-none">Link do produto</label>
+                <input type="url" required class="form-control shadow-none" style="border-color: grey;" id="prod-link" >
+                <label for="prod-img" required class="form-label">Imagem do produto</label>
+                <input type="url" class="form-control shadow-none" style="border-color: grey;" id="prod-img">
+                <label for="prod-tag" class="form-label">Tag para seu produto</label>
+                <input type="text" required class="form-control shadow-none" style="border-color: grey;" id="prod-tag">     
+                <button type="submit" class="btn btn-secondary shadow-none mt-3 mb-2" onclick="validaCadastroProdutos()">Registrar</button>
             </div>
         </form>
         
