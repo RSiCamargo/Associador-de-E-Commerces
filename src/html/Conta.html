@@ -23,9 +23,17 @@
                 document.getElementById("ecommerce-section").style.display = "block";
                 document.getElementById("profile-section").style.display = "none";
                 document.getElementById("productCreate-section").style.display = "none";
+                document.getElementById("productList-section").style.display = "none";
             }
         function ShowProducts(){
                 document.getElementById("productCreate-section").style.display = "block";
+                document.getElementById("ecommerce-section").style.display = "none";
+                document.getElementById("profile-section").style.display = "none";
+                document.getElementById("productList-section").style.display = "none"; 
+            }
+        function ListProducts(){
+                document.getElementById("productList-section").style.display = "block";
+                document.getElementById("productCreate-section").style.display = "none";
                 document.getElementById("ecommerce-section").style.display = "none";
                 document.getElementById("profile-section").style.display = "none"; 
             }
@@ -66,6 +74,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" onclick="ShowProducts()" href="#">Cadastrar Produtos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="ListProducts()" href="#">Seus Produtos</a>
                 </li>
                 </ul>
             </div>
@@ -135,6 +146,30 @@
                 <label for="prod-tag" class="form-label">Tag para seu produto</label>
                 <input type="text" required class="form-control shadow-none" style="border-color: grey;" id="prod-tag">     
                 <button type="submit" class="btn btn-secondary shadow-none mt-3 mb-2" onclick="validaCadastroProdutos()">Registrar</button>
+            </div>
+        </form>
+    </section>
+    <!-- Seção Listar produtos Cadastrados -->
+    <section id="productList-section" style="display: none;height: 100vh; width: 100%; background-color: #EAEDED">
+        <form class="container justify-content-center border border-5" style="width: 200rem ;margin-top: 7rem; background-color: white;">
+            <div class="listar-produtos">
+                <h2>Produtos Cadastrados</h2>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Preço</th>
+                            <th scope="col">Descrição</th>
+                            <th scope="col">Link</th>
+                            <th scope="col">Imagem</th>
+                            <th scope="col">Tags</th>
+                        </tr>
+                        </thead>
+                        <tbody class="produtosLista">
+
+                        </tbody>
+                    </table>
             </div>
         </form>
         

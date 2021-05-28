@@ -384,9 +384,36 @@ const renderCoupons = async () => {
 
 }
 
+//Carregar lista produtos
+const divlistaProdutos = document.querySelector('.produtosLista');
+
+const listProducts = async () => {
+    let uri = 'http://localhost:3000/products';
+
+    const res = await fetch(uri);
+    const products = await res.json();
+
+    let template = '';
+    products.forEach(product => {
+        template += `  
+        <tr>
+            <th scope="row">${product.id}</th>
+            <td>${product.title}</td>
+            <td>${product.price}</td>
+            <td>${product.desc}</td>
+            <td>${product.link}</td>
+            <td>${product.image}</td>
+            <td>${product.tags}</td>
+        </tr>
+        `
+    })
+    divListaProdutos.innerHTML = template;
+}
+
 //Quando todo conteudo estiver carregado, dispara a função render
 window.addEventListener('DOMContentLoaded', () => renderProducts());
 window.addEventListener('DOMContentLoaded', () => renderCoupons());
+window.addEventListener('DOMContentLoaded', () => listProducts());
 
 // --- BOTÕES ---
 btnHome.addEventListener('click', toHomeSection);
