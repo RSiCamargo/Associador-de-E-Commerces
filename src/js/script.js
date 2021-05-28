@@ -7,6 +7,7 @@ const searchSection = document.getElementById('search-section');
 const couponSection = document.getElementById('coupon-section');
 const productsSection = document.getElementById('products-section');
 const srcProd = document.getElementById("searchedElements");
+const filterTag = document.getElementById("filterTag");
 const btnHome = document.querySelector('.btn_home');
 const btnSearch = document.querySelector('.btn_search');
 const btnCoupon = document.querySelector('.btn_coupon');
@@ -25,6 +26,7 @@ let tagString; //String de pesquisa
 const resetParameters = () => {
     srcProd.innerHTML = "";
     nbRes.innerHTML = "";
+    filterTag.innerHTML = "";
     objSrc = [];
 }
 
@@ -39,10 +41,10 @@ const toHomeSection = () => {
 
 //Visualizar pesquisa
 const toSearchSection = () => {
-    if (tagArr.length > 1 || tagArr[0] != ''){
-        resetParameters();
-        tagArr = '';
-        tagString = document.getElementById("searchInput").value;
+    resetParameters();
+    tagString = document.getElementById("searchInput").value;
+    if (tagString.length > 0){
+        tagArr = [];
         tagArr = tagString.split(" ");
         searchSection.classList.remove('d-none');
         homeSection.classList.add('d-none');
@@ -80,7 +82,19 @@ const srcInput = (event) => {
 //Adicionar resultados da pesquisa
 const addSearchResults = (param) => {
     let template = '';
+    let template2 = '';
     
+    tagArr.forEach(tagArr => {
+            if(tagArr.length > 0){
+                template2 += `  
+                <i class="fa fa-tag" aria-hidden="true" style="margin: 0.35rem 0rem; color: coral"></i>
+                <p style="margin: 0.1rem 2rem 0.1rem 0.35rem; color: gray">${tagArr}</p>
+                `
+            }
+    })
+    
+    filterTag.innerHTML = template2;
+
     for(let i = 0 ; i < objDB.length ; i++){
         loop:
         for(let t = 0 ; t < objDB[i].tags.length ; t++){
@@ -103,44 +117,54 @@ const addSearchResults = (param) => {
         }
     }
     nbRes.innerHTML = objSrc.length + " resultado(s) encontrado(s)";
+    document.getElementById("searchInput").value = '';
 }
 
 //Filtro Valor Crescente
-const filterLowerHighest = () => {
-    let template = '';
-    objSrc.price.sort();
+function filterFunc() {
+    let fil = document.getElementById("filterSelect").value;
+    if (fil == "lower"){
+        srcProd.innerHTML = "";
+        let template = '';
+        objSrc.sort((a, b) => {return a.price - b.price;});
 
-    objSrc.forEach(objSrc => {
-        template += `  
-        <div style="width: 20rem; height: 32rem; background-color: white;">
-            <img src="${objSrc.image}" href="#" style="width: 20rem; height: 23rem; padding: 3rem 2rem;">
-            <div style="width: 20rem; height: 9rem; padding: 1rem 2rem;">
-                <div style="width: 100%; height: 2rem; color: black; display: flex; justify-content: center;">${objSrc.desc}</div>
-                <div style="width: 100%; height: 2rem; margin: 1rem 0rem; color: black; display: flex; justify-content: center;">R$${objSrc.price}</div>
+        objSrc.forEach(objSrc => {
+            template += `  
+            <div style="width: 20rem; height: 32rem; background-color: white;">
+                <img src="${objSrc.image}" href="#" style="width: 20rem; height: 23rem; padding: 3rem 2rem;">
+                <div style="width: 20rem; height: 9rem; padding: 1rem 2rem;">
+                    <div style="width: 100%; height: 2rem; color: black; display: flex; justify-content: center;">${objSrc.desc}</div>
+                    <div style="width: 100%; height: 2rem; margin: 1rem 0rem; color: black; display: flex; justify-content: center;">R$${objSrc.price}</div>
+                </div>
             </div>
-        </div>
-        `
-    })
-    srcProd.innerHTML = template;
+            `
+        })
+        srcProd.innerHTML = template;
+        document.getElementById("searchInput").value = '';
+    }else if(fil == "higher"){
+        srcProd.innerHTML = "";
+        let template = '';
+        objSrc.sort((a, b) => {return b.price - a.price;});
+
+        objSrc.forEach(objSrc => {
+            template += `  
+            <div style="width: 20rem; height: 32rem; background-color: white;">
+                <img src="${objSrc.image}" href="#" style="width: 20rem; height: 23rem; padding: 3rem 2rem;">
+                <div style="width: 20rem; height: 9rem; padding: 1rem 2rem;">
+                    <div style="width: 100%; height: 2rem; color: black; display: flex; justify-content: center;">${objSrc.desc}</div>
+                    <div style="width: 100%; height: 2rem; margin: 1rem 0rem; color: black; display: flex; justify-content: center;">R$${objSrc.price}</div>
+                </div>
+            </div>
+            `
+        })
+        srcProd.innerHTML = template;
+        document.getElementById("searchInput").value = '';
+    }
 }
 
 //Filtro Valor Decrescente
-const filterHighestLower = () => {
-    let template = '';
-    objSrc.price.sort(function(a, b){return b-a});
+const filterHigherLower = () => {
 
-    objSrc.forEach(objSrc => {
-        template += `  
-        <div style="width: 20rem; height: 32rem; background-color: white;">
-            <img src="${objSrc.image}" href="#" style="width: 20rem; height: 23rem; padding: 3rem 2rem;">
-            <div style="width: 20rem; height: 9rem; padding: 1rem 2rem;">
-                <div style="width: 100%; height: 2rem; color: black; display: flex; justify-content: center;">${objSrc.desc}</div>
-                <div style="width: 100%; height: 2rem; margin: 1rem 0rem; color: black; display: flex; justify-content: center;">R$${objSrc.price}</div>
-            </div>
-        </div>
-        `
-    })
-    srcProd.innerHTML = template;
 }
 
 //Permitir apenas letras no campo nome

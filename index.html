@@ -110,9 +110,17 @@
 
         <!-- Seção Pesquisa -->
         <section class="d-none" id="search-section" style="padding-top: 6rem; height: 100vh; width: 100%; background-color: white">
-            <div id="filters" style="height: 2rem; width: 100%; background-color: white; border-bottom-style: solid; border-width: 1px; border-color: lightgrey">
+            <div id="filters" style="height: 2rem; width: 100%; background-color: white; border-bottom-style: solid; border-width: 1px; border-color: lightgrey; display: flex">
                 <!-- Inserir Contador de resultados, tags selecionadas, e filtragem de resultados --> 
-                <p class="numResults" style="color: rgb(255, 30, 30); margin: 0.35rem 1rem; font-size: small"></p>
+                <p class="numResults" style="color:crimson; margin: 0.35rem 3rem 0.35rem 1rem; font-size: small"></p>
+                <div id ="filterTag" style="display: flex"></div>  
+                <div style="margin-right: 1rem; margin-left: auto">
+                    <select id="filterSelect" onchange="filterFunc()" class="form-select shadow-none" aria-label="Default select example" style="width: 11rem; height: 1.80rem; font-size: small; padding: 0 0 0 0.5rem">
+                        <option selected >Ordenar por...</option>
+                        <option value="lower">Preço: Menor - Maior</option>
+                        <option value="higher">Preço: Maior - Menor</option>
+                    </select>
+                </div>
             </div>
             <div id="searchedElements" style="height: 100vh; width: 100%; background-color: white; display: flex; flex-flow: row wrap;"> 
                 <!-- Insere elementos resultantes de pesquisa -->
