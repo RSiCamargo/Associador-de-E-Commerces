@@ -11,6 +11,7 @@ const btnHome = document.querySelector('.btn_home');
 const btnSearch = document.querySelector('.btn_search');
 const btnCoupon = document.querySelector('.btn_coupon');
 const btnProducts = document.querySelector('.btn_products');
+const nbRes = document.querySelector('.numResults');
 
 // --- VARIÁVEIS ---
 let tagArr = []; //Vetor com tags buscadas
@@ -21,9 +22,15 @@ let tagString; //String de pesquisa
 
 
 // --- FUNÇÕES ---
+const resetParameters = () => {
+    srcProd.innerHTML = "";
+    nbRes.innerHTML = "";
+    objSrc = [];
+}
+
 //Visualizar Home
 const toHomeSection = () => {
-    srcProd.innerHTML = "";
+    resetParameters();
     searchSection.classList.add('d-none');
     couponSection.classList.add('d-none');
     productsSection.classList.add('d-none');
@@ -33,7 +40,7 @@ const toHomeSection = () => {
 //Visualizar pesquisa
 const toSearchSection = () => {
     if (tagArr.length > 1 || tagArr[0] != ''){
-        srcProd.innerHTML = "";
+        resetParameters();
         tagArr = '';
         tagString = document.getElementById("searchInput").value;
         tagArr = tagString.split(" ");
@@ -47,7 +54,7 @@ const toSearchSection = () => {
 
 //Visualizar Cupons
 const toCouponSection = () => {
-    srcProd.innerHTML = "";
+    resetParameters();
     searchSection.classList.add('d-none');
     homeSection.classList.add('d-none');
     productsSection.classList.add('d-none');
@@ -56,7 +63,7 @@ const toCouponSection = () => {
 
 //Visualizar Produtos
 const toProductsSection = () => {
-    srcProd.innerHTML = "";
+    resetParameters();
     searchSection.classList.add('d-none');
     homeSection.classList.add('d-none');
     couponSection.classList.add('d-none');
@@ -73,6 +80,7 @@ const srcInput = (event) => {
 //Adicionar resultados da pesquisa
 const addSearchResults = (param) => {
     let template = '';
+    
     for(let i = 0 ; i < objDB.length ; i++){
         loop:
         for(let t = 0 ; t < objDB[i].tags.length ; t++){
@@ -94,13 +102,46 @@ const addSearchResults = (param) => {
             }
         }
     }
+    nbRes.innerHTML = objSrc.length + " resultado(s) encontrado(s)";
 }
 
 //Filtro Valor Crescente
+const filterLowerHighest = () => {
+    let template = '';
+    objSrc.price.sort();
 
+    objSrc.forEach(objSrc => {
+        template += `  
+        <div style="width: 20rem; height: 32rem; background-color: white;">
+            <img src="${objSrc.image}" href="#" style="width: 20rem; height: 23rem; padding: 3rem 2rem;">
+            <div style="width: 20rem; height: 9rem; padding: 1rem 2rem;">
+                <div style="width: 100%; height: 2rem; color: black; display: flex; justify-content: center;">${objSrc.desc}</div>
+                <div style="width: 100%; height: 2rem; margin: 1rem 0rem; color: black; display: flex; justify-content: center;">R$${objSrc.price}</div>
+            </div>
+        </div>
+        `
+    })
+    srcProd.innerHTML = template;
+}
 
 //Filtro Valor Decrescente
+const filterHighestLower = () => {
+    let template = '';
+    objSrc.price.sort(function(a, b){return b-a});
 
+    objSrc.forEach(objSrc => {
+        template += `  
+        <div style="width: 20rem; height: 32rem; background-color: white;">
+            <img src="${objSrc.image}" href="#" style="width: 20rem; height: 23rem; padding: 3rem 2rem;">
+            <div style="width: 20rem; height: 9rem; padding: 1rem 2rem;">
+                <div style="width: 100%; height: 2rem; color: black; display: flex; justify-content: center;">${objSrc.desc}</div>
+                <div style="width: 100%; height: 2rem; margin: 1rem 0rem; color: black; display: flex; justify-content: center;">R$${objSrc.price}</div>
+            </div>
+        </div>
+        `
+    })
+    srcProd.innerHTML = template;
+}
 
 //Permitir apenas letras no campo nome
 function ValidarLetras() {
@@ -303,12 +344,14 @@ const renderCoupons = async () => {
     let template = '';
     coupons.forEach(coupon => {
         template += `  
-            <div class="card" style="width: 20%">
-                <img src="${coupon.image}" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">${coupon.title}</h5>
-                  <p class="card-text">${coupon.desc}</p>
-                  <p class="card-text"><small class="text-muted">${coupon.cod}</small></p>
+            <div class="col">
+            <div class="card">
+                  <img src="${coupon.image}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">${coupon.title}</h5>
+                    <p class="card-text">${coupon.desc}</p>
+                    <p class="card-text"><small class="text-muted">${coupon.cod}</small></p>
+                  </div>
                 </div>
             </div>
         `
