@@ -260,8 +260,44 @@ const createEcommerce = async () => {
         desc: desc
     };
 
-    alert(JSON.stringify(doc));
     await fetch('http://localhost:3000/ecommerces',{
+        method: 'POST',
+        body: JSON.stringify(doc),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+          }
+    });
+
+}
+//Verifica os campos de cadastro de cupom
+function validaCadastroCupom(){
+    let nome = document.getElementById('cupom-nome').value;
+    let imagem = document.getElementById('cupom-imagem').value;
+    let desc = document.getElementById('cupom-desc').value;
+    let cod = document.getElementById('cupom-cod').value;
+
+    if(nome == "" || imagem == "" || desc == "" || cod == "")
+        false;
+    else createCoupon();
+}
+//Cadastra E-commerce no banco
+const createCoupon = async () => {
+
+    let nome = document.getElementById('cupom-nome').value;
+    let imagem = document.getElementById('cupom-imagem').value;
+    let desc = document.getElementById('cupom-desc').value;
+    let cod = document.getElementById('cupom-cod').value;
+
+    
+    const doc = {
+        title: nome,
+        image: imagem,
+        desc: desc,
+        cod: cod
+    };
+
+    alert(JSON.stringify(doc));
+    await fetch('http://localhost:3000/coupons',{
         method: 'POST',
         body: JSON.stringify(doc),
         headers: {
@@ -303,7 +339,6 @@ const createProduct = async () => {
         tags: tag
     };
 
-    alert(JSON.stringify(doc));
     await fetch('http://localhost:3000/products',{
         method: 'POST',
         body: JSON.stringify(doc),
@@ -315,7 +350,7 @@ const createProduct = async () => {
 }
 
 //Carregar os produtos na pag produtos
-/*const divProduct = document.querySelector('.products');
+const divProduct = document.querySelector('.products');
 const renderProducts = async () => {
     let uri = 'http://localhost:3000/products';
 
@@ -325,20 +360,22 @@ const renderProducts = async () => {
     let template = '';
     products.forEach(product => {
         template += `  
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top " src="${product.image}" >
-                <div class="card-body">
+            <div class="col"
+            <div class="card">
+                <img class="card-img-top " src="${product.image}" style="height: 15rem;width: 15rem;" >
+                <div class="card-body" style="height: 15rem;width: 15rem;">
                     <h5 class="card-title text-center">${product.title}</h5>
                     <h5 class="card-text text-center">R$${product.price}</h5>
                     <p class="card-text">${product.desc}</p>
                     <a class="btn btn-secondary" href"#">Visitar</a>
                 </div>
             </div>
+            </div>
         `
     })
     divProduct.innerHTML = template;
-}*/
-const renderProducts = async () => {
+}
+/*const renderProducts = async () => {
     let uri = 'http://localhost:3000/products';
 
     const res = await fetch(uri);
@@ -356,6 +393,7 @@ const renderProducts = async () => {
         });
     })
 }
+*/
 
 //Carregar os produtos na pag cupom
 const divCoupon = document.querySelector('.coupons');
@@ -395,18 +433,19 @@ const listProducts = async () => {
 
     let template = '';
     products.forEach(product => {
-        template += `  
-        <tr>
-            <th scope="row">${product.id}</th>
-            <td>${product.title}</td>
-            <td>${product.price}</td>
-            <td>${product.desc}</td>
-            <td>${product.link}</td>
-            <td>${product.image}</td>
-            <td>${product.tags}</td>
-        </tr>
+        template += `   
+            <tr>
+                <th scope="row">${product.id}</th>
+                <td>${product.title}</td>
+                <td>${product.price}</td>
+                <td>${product.desc}</td>
+                <td>${product.link}</td>
+                <td>${product.image}</td>
+                <td>${product.tags}</td>
+            </tr>
         `
     })
+    
     divListaProdutos.innerHTML = template;
 }
 
