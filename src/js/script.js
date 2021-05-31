@@ -435,7 +435,7 @@ const listProducts = async () => {
     products.forEach(product => {
         template += `   
             <tr>
-                <th scope="row">${product.id}</th>
+                <th>${product.id}</th>
                 <td>${product.title}</td>
                 <td>${product.price}</td>
                 <td>${product.desc}</td>
