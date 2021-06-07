@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" />
-        <link rel="shortcut icon" href="" type="image/x-icon">
+        <link rel="shortcut icon" href="src/img/favicon.ico" type="image/x-icon">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
         
@@ -17,7 +17,7 @@
         <header class="fixed-top" style="border-color: lightgray; border-width: 0 0 1px 0; border-style: solid">
             <nav class="navbar navbar-expand-lg navbar-light bg-light" style="padding: 0px">
                 <div class="container-fluid" style="background: #e8d38a">
-                    <a class="navbar-brand btn_home" style="color: #222222" href="#">Logo Aqui</a>
+                    <a class="navbar-brand btn_home" style="color: #222222" href="#"><img src="src/img/e-logo1.png" style="height: 3rem;"></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -51,11 +51,11 @@
                 </div>
             </nav>
             <nav class="navbar navbar-expand-lg navbar-light bg-light" style="padding: 0px">
-                <div class="container-fluid" style="background: #eae7dc">
+                <div class="container-fluid bg-dark">
                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
                         <ul class="navbar-nav" style="width: 100%; justify-content: space-between">
                             <li class="nav-item dropdown">
-                                <a style="color: #222222" class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a style="color: #EAEDED" class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="fa fa-bars" aria-hidden="true"></i>
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -65,34 +65,31 @@
                                 </ul>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link active btn_products" style="color: #222222" href="#">Produtos</a>
+                                <a class="nav-link active btn_products" style="color: #EAEDED" href="#">Produtos</a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link active" style="color: #222222" href="#">opcao aq</a>
+                                <a class="nav-link active" style="color: #EAEDED" href="#">Destaques</a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link active" style="color: #222222" href="#">opcao aq</a>
+                                <a class="nav-link active" style="color: #EAEDED" href="#">Mais vendidos</a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link active" style="color: #222222" href="#">opcao aq</a>
+                                <a class="nav-link active" style="color: #EAEDED" href="#">Promoções</a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link active" style="color: #222222" href="#">opcao aq</a>
+                                <a class="nav-link active" style="color: #EAEDED" href="#">E-commerces</a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link active" style="color: #222222" href="#">opcao aq</a>
+                                <a class="nav-link active" style="color: #EAEDED" href="#">opcao aq</a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link active" style="color: #222222" href="#">opcao aq</a>
+                                <a class="nav-link active" style="color: #EAEDED" href="#">opcao aq</a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link active" style="color: #222222" href="#">opcao aq</a>
+                                <a class="nav-link active" style="color: #EAEDED" href="#">opcao aq</a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link active" style="color: #222222" href="#">opcao aq</a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link active" style="color: #222222" href="#">opcao aq</a>
+                                <a class="nav-link active" style="color: #EAEDED" href="#">opcao aq</a>
                             </li>
                         </ul>
                     </div>
@@ -101,11 +98,26 @@
         </header>
 
         <!-- Seção Pag. Principal -->
-        <section class="" id="home-section" style="height: 200vh; width: 100%; background-color: #EAEDED">
-            <div style="height: 200vh; width: 80%; position: absolute; left: 10%; background-color: white"> 
-                <p class="" style="font-weight: bold;font-size: 3rem;margin-top: 6rem;"></p>
-            </div>
-            
+        <section class="" id="home-section" style="height:109vh; width: 100%; background-color: #EAEDED"> 
+                <div style="margin-top: 5.5rem;height: 100vh; width: 80%; position: absolute; left: 10%; background-color: white">
+                    <div id="carouselExampleControls" class="carousel slide" style="width: 60rem;margin-left: 32rem" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                          <div class="carousel-item active">
+                            <img src="src/img/slide1x.png" class="d-block w-100" alt="...">
+                          </div>
+                          <div class="carousel-item">
+                            <img src="src/img/Slide2.jpg" class="d-block w-100" alt="...">
+                          </div>
+                        <button class="carousel-control-prev" type="button" style="height: 5rem;width: 2rem;margin-top: 12rem;" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" style="height: 5rem;width: 2rem;margin-top: 12rem;" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                        </button>
+                      </div>
+                    </div>   
         </section>
 
         <!-- Seção Pesquisa -->
@@ -139,7 +151,7 @@
         <!-- Seção Produtos -->
         <section class="d-none" id="products-section" style="margin-top: 5.6rem ;height: 200vh; width: 100%; background-color: #EAEDED">
             <div style="height: 200vh; width: 80%; position: absolute; left: 10%; background-color: white">
-                <div class="products card-group">
+                <div class="products card-group" >
                         <!-- recebe os produtos pela função divProducts-->       
                 </div>
             </div>

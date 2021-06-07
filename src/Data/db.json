@@ -31,81 +31,90 @@
   ],
   "coupons": [
     {
-        "id": 1,
-        "title": "10% OFF",
-        "image": "./src/img/cupom.png",
-        "desc": "Cupom de 10% de desconto para camisetas brancas.",
-        "cod": "10OFFWHITE"
+      "id": 1,
+      "title": "10% OFF",
+      "image": "./src/img/cupom.png",
+      "desc": "Cupom de 10% de desconto para camisetas brancas.",
+      "cod": "10OFFWHITE"
     },
     {
-        "id": 1,
-        "title": "10% OFF",
-        "image": "./src/img/cupom.png",
-        "desc": "Cupom de 10% de desconto para camisetas brancas.",
-        "cod": "10OFFWHITE"
+      "id": 1,
+      "title": "10% OFF",
+      "image": "./src/img/cupom.png",
+      "desc": "Cupom de 10% de desconto para camisetas brancas.",
+      "cod": "10OFFWHITE"
     },
     {
-        "id": 1,
-        "title": "10% OFF",
-        "image": "./src/img/cupom.png",
-        "desc": "Cupom de 10% de desconto para camisetas brancas.",
-        "cod": "10OFFWHITE"
+      "id": 1,
+      "title": "10% OFF",
+      "image": "./src/img/cupom.png",
+      "desc": "Cupom de 10% de desconto para camisetas brancas.",
+      "cod": "10OFFWHITE"
     },
     {
-        "id": 1,
-        "title": "10% OFF",
-        "image": "./src/img/cupom.png",
-        "desc": "Cupom de 10% de desconto para camisetas brancas.",
-        "cod": "10OFFWHITE"
+      "id": 1,
+      "title": "10% OFF",
+      "image": "./src/img/cupom.png",
+      "desc": "Cupom de 10% de desconto para camisetas brancas.",
+      "cod": "10OFFWHITE"
     },
     {
-        "id": 1,
-        "title": "10% OFF",
-        "image": "./src/img/cupom.png",
-        "desc": "Cupom de 10% de desconto para camisetas brancas.",
-        "cod": "10OFFWHITE"
+      "id": 1,
+      "title": "10% OFF",
+      "image": "./src/img/cupom.png",
+      "desc": "Cupom de 10% de desconto para camisetas brancas.",
+      "cod": "10OFFWHITE"
     },
     {
-        "id": 1,
-        "title": "10% OFF",
-        "image": "./src/img/cupom.png",
-        "desc": "Cupom de 10% de desconto para camisetas brancas.",
-        "cod": "10OFFWHITE"
+      "id": 1,
+      "title": "10% OFF",
+      "image": "./src/img/cupom.png",
+      "desc": "Cupom de 10% de desconto para camisetas brancas.",
+      "cod": "10OFFWHITE"
     },
     {
-        "id": 1,
-        "title": "10% OFF",
-        "image": "./src/img/cupom.png",
-        "desc": "Cupom de 10% de desconto para camisetas brancas.",
-        "cod": "10OFFWHITE"
+      "id": 1,
+      "title": "10% OFF",
+      "image": "./src/img/cupom.png",
+      "desc": "Cupom de 10% de desconto para camisetas brancas.",
+      "cod": "10OFFWHITE"
     }
   ],
   "products": [
     {
-        "id": 1,
-        "title": "Camiseta Branca",
-        "price": "85.90",
-        "desc": "Uma camiseta branca normal.",
-        "link": "https://www.hering.com.br/store/pt/p/camiseta-basica-mangas-curtas-world-0201N0A00S1",
-        "image": "./src/img/camisetaTeste.png",
-        "tags": [
-          "camiseta",
-          "branca",
-          "camisetas"
-        ]
+      "id": 1,
+      "title": "Camiseta Branca",
+      "price": "85.90",
+      "desc": "Uma camiseta branca normal.",
+      "link": "https://www.hering.com.br/store/pt/p/camiseta-basica-mangas-curtas-world-0201N0A00S1",
+      "image": "./src/img/camisetaTeste.png",
+      "tags": [
+        "camiseta",
+        "branca",
+        "camisetas"
+      ]
     },
     {
-        "id": 2,
-        "title": "Camiseta Branca Barata",
-        "price": "49.90",
-        "desc": "Uma camiseta branca mais em conta.",
-        "link": "https://www.hering.com.br/store/pt/p/camiseta-basica-mangas-curtas-world-0201N0A00S1",
-        "image": "./src/img/camisetaTeste.png",
-        "tags": [
-          "camiseta",
-          "branca",
-          "camisetas"
-        ]
-      }
+      "id": 2,
+      "title": "Camiseta Branca Barata",
+      "price": "49.90",
+      "desc": "Uma camiseta branca mais em conta.",
+      "link": "https://www.hering.com.br/store/pt/p/camiseta-basica-mangas-curtas-world-0201N0A00S1",
+      "image": "./src/img/camisetaTeste.png",
+      "tags": [
+        "camiseta",
+        "branca",
+        "camisetas"
+      ]
+    },
+    {
+      "title": "Calça Jeans",
+      "price": "199,90",
+      "desc": "Calça jeans simples",
+      "link": "https://www.riachuelo.com.br/calca-jeans-color-12286532_sku?gclid=Cj0KCQjwhr2FBhDbARIsACjwLo2J7lCWYX7h7hYkw2LYVFRoQ1KH5LQHfZSF-jhdvuRytuCBzLqfd70aAvEPEALw_wcB",
+      "image": "./src/img/jeans.png",
+      "tags": "calça",
+      "id": 3
+    }
   ]
 }
