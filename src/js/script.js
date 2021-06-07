@@ -1,7 +1,5 @@
 'use-strict';
-//!ADD Refresh
-
-// --- ELEMENTOS ---
+// ----- ELEMENTOS -----
 const homeSection = document.getElementById('home-section');
 const searchSection = document.getElementById('search-section');
 const couponSection = document.getElementById('coupon-section');
@@ -13,8 +11,13 @@ const btnSearch = document.querySelector('.btn_search');
 const btnCoupon = document.querySelector('.btn_coupon');
 const btnProducts = document.querySelector('.btn_products');
 const nbRes = document.querySelector('.numResults');
+const divlistaProdutos = document.querySelector('.produtosLista');
+const divCoupon = document.querySelector('.coupons');
+const divProduct = document.querySelector('.products');
+const logIn = document.getElementById("login");
+const createAcc = document.getElementById("CriaConta");
 
-// --- VARIÁVEIS ---
+// ----- VARIÁVEIS -----
 let tagArr = []; //Vetor com tags buscadas
 let objDB = []; //Vetor que segura objs do banco (Possivel retirar depois)
 let objSrc = []; //Obj de itens encontrados na pesquisa
@@ -22,7 +25,7 @@ let tagString; //String de pesquisa
 
 
 
-// --- FUNÇÕES ---
+// ----- FUNÇÕES -----
 const resetParameters = () => {
     srcProd.innerHTML = "";
     nbRes.innerHTML = "";
@@ -30,7 +33,8 @@ const resetParameters = () => {
     objSrc = [];
 }
 
-//Visualizar Home
+// --- Change Pag ---
+//Home
 const toHomeSection = () => {
     resetParameters();
     searchSection.classList.add('d-none');
@@ -39,7 +43,7 @@ const toHomeSection = () => {
     homeSection.classList.remove('d-none');
 }
 
-//Visualizar pesquisa
+//Pesquisa
 const toSearchSection = () => {
     resetParameters();
     tagString = document.getElementById("searchInput").value;
@@ -54,30 +58,46 @@ const toSearchSection = () => {
     }
 }
 
-//Visualizar Cupons
+//Cupons
 const toCouponSection = () => {
     resetParameters();
     searchSection.classList.add('d-none');
     homeSection.classList.add('d-none');
     productsSection.classList.add('d-none');
     couponSection.classList.remove('d-none');
+    window.addEventListener('DOMContentLoaded', () => renderCoupons());
 }
 
-//Visualizar Produtos
+//Produtos
 const toProductsSection = () => {
     resetParameters();
     searchSection.classList.add('d-none');
     homeSection.classList.add('d-none');
     couponSection.classList.add('d-none');
     productsSection.classList.remove('d-none');
+    window.addEventListener('DOMContentLoaded', () => renderProducts());
+    window.addEventListener('DOMContentLoaded', () => listProducts());
 }
 
+//Log In
+const toLogInSection = () => {
+    logIn.classList.remove('d-none');
+    createAcc.classList.add('d-none');
+}
+
+//Create Account
+const toCreateAccSection = () => {
+    logIn.classList.add('d-none');
+    createAcc.classList.remove('d-none');
+}
+
+// --- Funcs ---
 //Habilitar pesquisa com Enter
 const srcInput = (event) => {
     if (event.keyCode === 13) {
         toSearchSection();
     }
- }
+}
 
 //Adicionar resultados da pesquisa
 const addSearchResults = (param) => {
@@ -120,7 +140,7 @@ const addSearchResults = (param) => {
     document.getElementById("searchInput").value = '';
 }
 
-//Filtro Valor Crescente
+//Filtro Valor
 function filterFunc() {
     let fil = document.getElementById("filterSelect").value;
     if (fil == "lower"){
@@ -162,17 +182,13 @@ function filterFunc() {
     }
 }
 
-//Filtro Valor Decrescente
-const filterHigherLower = () => {
-
-}
-
 //Permitir apenas letras no campo nome
 function ValidarLetras() {
     let campo = document.getElementById('campo-nome');
     campo.value = campo.value.replace(/[^a-zA-Z]+/, '');
 }
 
+// --- Verif ---
 //Verificar senhas 
 function verificarSenha(){
     let senha1 = document.getElementById('campo-senha').value;
@@ -196,6 +212,48 @@ function validaCadastro(){
     else if(verificarSenha() == true)
         createAccount();
 }
+
+//Verifica os campos de cadastro de Ecommerce
+function validaCadastroEcommerce(){
+    let nome = document.getElementById('ecom-nome').value;
+    let cnpj = document.getElementById('ecom-cnpj').value;
+    let link = document.getElementById('ecom-link').value;
+    let email = document.getElementById('ecom-email').value;
+    let phone = document.getElementById('ecom-tel').value;
+    let desc = document.getElementById('ecom-desc').value;
+
+    if(nome == "" || cnpj == "" || link == "" || email == "" || phone == "" || desc == "")
+        false;
+    else createEcommerce();
+}
+
+//Verifica os campos de cadastro de cupom
+function validaCadastroCupom(){
+    let nome = document.getElementById('cupom-nome').value;
+    let imagem = document.getElementById('cupom-imagem').value;
+    let desc = document.getElementById('cupom-desc').value;
+    let cod = document.getElementById('cupom-cod').value;
+
+    if(nome == "" || imagem == "" || desc == "" || cod == "")
+        false;
+    else createCoupon();
+}
+
+//Verifica os campos de cadastro de produto
+function validaCadastroProdutos(){
+    let title = document.getElementById('prod-title').value;
+    let price = document.getElementById('prod-price').value;
+    let desc = document.getElementById('prod-desc').value;
+    let link = document.getElementById('prod-link').value;
+    let image = document.getElementById('prod-img').value;
+    let tag = document.getElementById('prod-tag').value;
+
+    if(title == "" || price == "" || desc == "" || link == "" || image == "" || tag == "")
+        false;
+    else createProduct();
+}
+
+// --- Register ---
 //cadastrar conta no banco
 const createAccount = async () => {
 
@@ -225,19 +283,6 @@ const createAccount = async () => {
     window.location.replace("../../index.html");
 }
 
-//Verifica os campos de cadastro de Ecommerce
-function validaCadastroEcommerce(){
-    let nome = document.getElementById('ecom-nome').value;
-    let cnpj = document.getElementById('ecom-cnpj').value;
-    let link = document.getElementById('ecom-link').value;
-    let email = document.getElementById('ecom-email').value;
-    let phone = document.getElementById('ecom-tel').value;
-    let desc = document.getElementById('ecom-desc').value;
-
-    if(nome == "" || cnpj == "" || link == "" || email == "" || phone == "" || desc == "")
-        false;
-    else createEcommerce();
-}
 //Cadastra E-commerce no banco
 const createEcommerce = async () => {
 
@@ -269,17 +314,7 @@ const createEcommerce = async () => {
     });
 
 }
-//Verifica os campos de cadastro de cupom
-function validaCadastroCupom(){
-    let nome = document.getElementById('cupom-nome').value;
-    let imagem = document.getElementById('cupom-imagem').value;
-    let desc = document.getElementById('cupom-desc').value;
-    let cod = document.getElementById('cupom-cod').value;
 
-    if(nome == "" || imagem == "" || desc == "" || cod == "")
-        false;
-    else createCoupon();
-}
 //Cadastra E-commerce no banco
 const createCoupon = async () => {
 
@@ -307,19 +342,6 @@ const createCoupon = async () => {
 
 }
 
-//Verifica os campos de cadastro de produto
-function validaCadastroProdutos(){
-    let title = document.getElementById('prod-title').value;
-    let price = document.getElementById('prod-price').value;
-    let desc = document.getElementById('prod-desc').value;
-    let link = document.getElementById('prod-link').value;
-    let image = document.getElementById('prod-img').value;
-    let tag = document.getElementById('prod-tag').value;
-
-    if(title == "" || price == "" || desc == "" || link == "" || image == "" || tag == "")
-        false;
-    else createProduct();
-}
 //Cadastra produto no banco
 const createProduct = async () => {
 
@@ -349,8 +371,8 @@ const createProduct = async () => {
 
 }
 
+// --- Load ---
 //Carregar os produtos na pag produtos
-const divProduct = document.querySelector('.products');
 const renderProducts = async () => {
     let uri = 'http://localhost:3000/products';
 
@@ -375,28 +397,8 @@ const renderProducts = async () => {
     })
     divProduct.innerHTML = template;
 }
-/*const renderProducts = async () => {
-    let uri = 'http://localhost:3000/products';
-
-    const res = await fetch(uri);
-    const products = await res.json();
-    
-    products.forEach(product => {
-        objDB.push(
-            {
-            id: product.id,
-            title: product.title,
-            price: product.price,
-            desc: product.desc,
-            image: product.image,
-            tags: product.tags,
-        });
-    })
-}
-*/
 
 //Carregar os produtos na pag cupom
-const divCoupon = document.querySelector('.coupons');
 const renderCoupons = async () => {
     let uri = 'http://localhost:3000/coupons';
 
@@ -423,8 +425,6 @@ const renderCoupons = async () => {
 }
 
 //Carregar lista produtos
-const divlistaProdutos = document.querySelector('.produtosLista');
-
 const listProducts = async () => {
     let uri = 'http://localhost:3000/products';
 
@@ -449,10 +449,28 @@ const listProducts = async () => {
     divListaProdutos.innerHTML = template;
 }
 
-//Quando todo conteudo estiver carregado, dispara a função render
-window.addEventListener('DOMContentLoaded', () => renderProducts());
-window.addEventListener('DOMContentLoaded', () => renderCoupons());
-window.addEventListener('DOMContentLoaded', () => listProducts());
+// --- Sync ---
+//Atualiza objetos procurados
+const renderProductList = async () => {
+    let uri = 'http://localhost:3000/products';
+
+    const res = await fetch(uri);
+    const products = await res.json();
+    
+    products.forEach(product => {
+        objDB.push(
+            {
+            id: product.id,
+            title: product.title,
+            price: product.price,
+            desc: product.desc,
+            image: product.image,
+            tags: product.tags,
+        });
+    })
+}
+
+window.addEventListener('DOMContentLoaded', () => renderProductList());
 
 // --- BOTÕES ---
 btnHome.addEventListener('click', toHomeSection);
