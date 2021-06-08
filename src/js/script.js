@@ -124,9 +124,9 @@ const addSearchResults = (param) => {
                             <div style="width: 20rem; height: 32rem; background-color: white;">
                                 <img src="${objDB[i].image}" href="#" style="width: 20rem; height: 23rem; padding: 3rem 2rem;">
                                 <div style="width: 20rem; height: 9rem; padding: 1rem 2rem;">
-                                    <div style="width: 100%; height: 2rem; color: black; display: flex; justify-content: center;">${objDB[i].desc}</div>
+                                    <div style="width: 100%; height: 2rem; color: black; display: flex; justify-content: center;">${objDB[i].title}</div>
                                     <div style="width: 100%; height: 2rem; margin: 1rem 0rem; color: black; display: flex; justify-content: center;">R$${objDB[i].price}</div>
-                                    <a class="btn btn-secondary" target="_blank" rel="noopener noreferrer" href="${objDB[i].link}">Visitar Produto</a>
+                                    <a style="margin-left: 23%" class="btn btn-secondary" target="_blank" rel="noopener noreferrer" href="${objDB[i].link}">Visitar Produto</a>
                                 </div>
                             </div>
                             `
@@ -404,17 +404,14 @@ const renderProducts = async () => {
 
     let template = '';
     products.forEach(product => {
-        template += `  
-            <div class="col"
-            <div class="card">
-                <img class="card-img-top " src="${product.image}" style="height: 15rem;width: 15rem;" >
-                <div class="card-body" style="height: 15rem;width: 15rem;">
-                    <h5 class="card-title text-center">${product.title}</h5>
-                    <h5 class="card-text text-center">R$${product.price}</h5>
-                    <p class="card-text">${product.desc}</p>
-                    <a class="btn btn-secondary" target="_blank" rel="noopener noreferrer" href="${product.link}">Visitar Produto</a>
+        template += ` 
+            <div style="width: 20rem; height: 32rem; background-color: white;">
+                <img src="${product.image}" href="#" style="width: 20rem; height: 23rem; padding: 3rem 2rem;">
+                <div style="width: 20rem; height: 9rem; padding: 1rem 2rem;">
+                    <div style="width: 100%; height: 2rem; color: black; display: flex; justify-content: center;">${product.title}</div>
+                    <div style="width: 100%; height: 2rem; margin: 1rem 0rem; color: black; display: flex; justify-content: center;">R$${product.price}</div>
+                    <a style="margin-left: 23%" class="btn btn-secondary" target="_blank" rel="noopener noreferrer" href="${product.link}">Visitar Produto</a>
                 </div>
-            </div>
             </div>
         `
     })
@@ -463,7 +460,7 @@ const listProducts = async () => {
                     <td>R$${product.price}</td>
                     <td>${product.desc}</td>
                     <td>${product.tags}</td>
-                    </tr>
+                </tr>
         `
     });
     
