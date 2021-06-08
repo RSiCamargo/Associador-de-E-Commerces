@@ -16,14 +16,16 @@ const divCoupon = document.querySelector('.coupons');
 const divProduct = document.querySelector('.products');
 const logIn = document.getElementById("login");
 const createAcc = document.getElementById("CriaConta");
+const userInp = document.getElementById("userInput");
+const pssInp = document.getElementById("passwordInput");
+
 
 // ----- VARIÁVEIS -----
 let tagArr = []; //Vetor com tags buscadas
-let objDB = []; //Vetor que segura objs do banco (Possivel retirar depois)
+let objDB = []; //Vetor que recebe objs do banco (Dentro do ambiente de apresentacao apenas)
+let accDB = []; //Vetor que recebe cadastros do banco (Dentro do ambiente de apresentacao apenas)
 let objSrc = []; //Obj de itens encontrados na pesquisa
 let tagString; //String de pesquisa
-
-
 
 // ----- FUNÇÕES -----
 const resetParameters = () => {
@@ -65,7 +67,6 @@ const toCouponSection = () => {
     homeSection.classList.add('d-none');
     productsSection.classList.add('d-none');
     couponSection.classList.remove('d-none');
-    window.addEventListener('DOMContentLoaded', () => renderCoupons());
 }
 
 //Produtos
@@ -75,8 +76,6 @@ const toProductsSection = () => {
     homeSection.classList.add('d-none');
     couponSection.classList.add('d-none');
     productsSection.classList.remove('d-none');
-    window.addEventListener('DOMContentLoaded', () => renderProducts());
-    window.addEventListener('DOMContentLoaded', () => listProducts());
 }
 
 //Log In
@@ -253,10 +252,23 @@ function validaCadastroProdutos(){
     else createProduct();
 }
 
+//Verifica dados de login (DENTRO DO AMBIENTE DE APRESENTACAO APENAS)
+function validaLogIn(){
+    usr = false;
+    pss = false;
+    loop:
+    for(let i = 0 ; i < accDB.length ; i++){
+        usr = i.username == userInp.value ? true : false;
+        pss = (usr == true) ? (i.password == pssInp ? true : false) : false;
+        if(usr == true && pss == true)
+            break loop;
+    }
+}
+
+
 // --- Register ---
 //cadastrar conta no banco
 const createAccount = async () => {
-
     let nome = document.getElementById('campo-nome').value;
     let usuario = document.getElementById('campo-usuario').value;
     let email = document.getElementById('campo-email').value;
@@ -450,9 +462,29 @@ const listProducts = async () => {
 }
 
 // --- Sync ---
-//Atualiza objetos procurados
-const renderProductList = async () => {
+//Sync cadastros banco NAO APLICAVEL, APENAS AMBIENTE DE APRESENTACAO
+const renderAccountList = async () => {
     let uri = 'http://localhost:3000/products';
+
+    const res = await fetch(uri);
+    const accounts = await res.json();
+    
+    accounts.forEach(account => {
+        acc.push(
+            {
+            id: account.id,
+            name: account.name,
+            username: account.username,
+            email: account.email,
+            birthdate: account.birthdate,
+            password: account.password,
+        });
+    })
+}
+
+//Sync produtos banco NAO APLICAVEL, APENAS AMBIENTE DE APRESENTACAO
+const renderProductList = async () => {
+    let uri = 'http://localhost:3000/accounts';
 
     const res = await fetch(uri);
     const products = await res.json();
@@ -470,7 +502,12 @@ const renderProductList = async () => {
     })
 }
 
+// --- Render ---
 window.addEventListener('DOMContentLoaded', () => renderProductList());
+window.addEventListener('DOMContentLoaded', () => renderAccountList);
+window.addEventListener('DOMContentLoaded', () => renderCoupons());
+window.addEventListener('DOMContentLoaded', () => renderProducts());
+window.addEventListener('DOMContentLoaded', () => listProducts());
 
 // --- BOTÕES ---
 btnHome.addEventListener('click', toHomeSection);
