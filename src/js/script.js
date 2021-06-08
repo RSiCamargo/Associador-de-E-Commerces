@@ -185,7 +185,7 @@ function filterFunc() {
 //Permitir apenas letras no campo nome
 function ValidarLetras() {
     let campo = document.getElementById('campo-nome');
-    campo.value = campo.value.replace(/[^a-zA-Z]+/, '');
+    campo.value = campo.value.replace(/[^a-zA-Z ]+/, '');
 }
 
 // --- Verif ---
