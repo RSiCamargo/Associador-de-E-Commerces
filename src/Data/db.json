@@ -21,7 +21,7 @@
       "password": "123"
     },
     {
-    "id": 2,
+      "id": 2,
       "name": "Carlos",
       "username": "Carlos11",
       "email": "carlos@gmail.com",
@@ -114,7 +114,14 @@
       "desc": "Calça jeans simples",
       "link": "https://www.riachuelo.com.br/calca-jeans-color-12286532_sku?gclid=Cj0KCQjwhr2FBhDbARIsACjwLo2J7lCWYX7h7hYkw2LYVFRoQ1KH5LQHfZSF-jhdvuRytuCBzLqfd70aAvEPEALw_wcB",
       "image": "./src/img/jeans.png",
+<<<<<<< HEAD
       "tags": ["calça", "calca"]
+=======
+      "tags": [
+        "calça"
+      ],
+      "id": 3
+>>>>>>> 348fb5c99b3254518e4ade8ac451f1950968a906
     }
   ]
 }

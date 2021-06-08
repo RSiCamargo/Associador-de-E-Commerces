@@ -11,7 +11,7 @@ const btnSearch = document.querySelector('.btn_search');
 const btnCoupon = document.querySelector('.btn_coupon');
 const btnProducts = document.querySelector('.btn_products');
 const nbRes = document.querySelector('.numResults');
-const divlistaProdutos = document.querySelector('.produtosLista');
+const divlistPr = document.querySelector('.listaProdutos');
 const divCoupon = document.querySelector('.coupons');
 const divProduct = document.querySelector('.products');
 const logIn = document.getElementById("login");
@@ -32,6 +32,7 @@ let tagString; //String de pesquisa
 var status = localStorage.getItem("statusVal"); //log usuario
 
 // ----- FUNÇÕES -----
+/*
 if(status){
     deslog.classList.add("d-none");
     log.classList.remove("d-none");
@@ -41,7 +42,7 @@ if(status){
     log.classList.add("d-none");
     log2.classList.add("d-none");
 }
-
+*/
 const resetParameters = () => {
     srcProd.innerHTML = "";
     nbRes.innerHTML = "";
@@ -388,6 +389,10 @@ const createProduct = async () => {
     let link = document.getElementById('prod-link').value;
     let image = document.getElementById('prod-img').value;
     let tag = document.getElementById('prod-tag').value;
+
+    tagArr = [];
+    tagArr = tag.split(" ");
+
     
     const doc = {
         title: title,
@@ -395,7 +400,7 @@ const createProduct = async () => {
         desc: desc,
         link: link,
         image: image,
-        tags: tag
+        tags: tagArr
     };
 
     await fetch('http://localhost:3000/products',{
@@ -405,7 +410,6 @@ const createProduct = async () => {
             "Content-type": "application/json; charset=UTF-8"
           }
     });
-
 }
 
 // --- Load ---
@@ -470,20 +474,18 @@ const listProducts = async () => {
 
     let template = '';
     products.forEach(product => {
-        template += `   
-            <tr>
-                <th>${product.id}</th>
-                <td>${product.title}</td>
-                <td>${product.price}</td>
-                <td>${product.desc}</td>
-                <td>${product.link}</td>
-                <td>${product.image}</td>
-                <td>${product.tags}</td>
-            </tr>
+        template += `  
+                <tr>
+                    <th>${product.id}</th>
+                    <td>${product.title}</td>
+                    <td>R$${product.price}</td>
+                    <td>${product.desc}</td>
+                    <td>${product.tags}</td>
+                    </tr>
         `
-    })
+    });
     
-    divListaProdutos.innerHTML = template;
+    divlistPr.innerHTML = template;
 }
 
 // --- Sync ---
