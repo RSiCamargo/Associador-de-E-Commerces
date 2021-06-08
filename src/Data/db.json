@@ -21,12 +21,12 @@
       "password": "123"
     },
     {
+    "id": 2,
       "name": "Carlos",
       "username": "Carlos11",
       "email": "carlos@gmail.com",
       "birthdate": "2021-05-05",
-      "password": "123",
-      "id": 2
+      "password": "123"
     }
   ],
   "coupons": [

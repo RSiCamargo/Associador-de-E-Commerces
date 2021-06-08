@@ -28,6 +28,7 @@ let objDB = []; //Vetor que recebe objs do banco (Dentro do ambiente de apresent
 let accDB = []; //Vetor que recebe cadastros do banco (Dentro do ambiente de apresentacao apenas)
 let objSrc = []; //Obj de itens encontrados na pesquisa
 let tagString; //String de pesquisa
+let status = false; //log usuario
 
 // ----- FUNÇÕES -----
 const resetParameters = () => {
@@ -35,6 +36,14 @@ const resetParameters = () => {
     nbRes.innerHTML = "";
     filterTag.innerHTML = "";
     objSrc = [];
+    if(status){
+        deslog.classList.add("d-none");
+        log.classList.remove("d-none");
+    }else{
+        deslog.classList.remove("d-none");
+        log.classList.add("d-none");
+    }
+
 }
 
 // --- Change Pag ---
@@ -189,16 +198,6 @@ function ValidarLetras() {
     campo.value = campo.value.replace(/[^a-zA-Z]+/, '');
 }
 
-const realizarLogIn = () => {
-    deslog.classList.add("d-none");
-    log.classList.remove("d-none");
-    window.location.replace("../../index.html");
-}
-const realizarLogOut = () => {
-    deslog.classList.remove("d-none");
-    log.classList.add("d-none");
-}
-
 // --- Verif ---
 //Verificar senhas 
 function verificarSenha(){
@@ -271,11 +270,11 @@ function validaLogIn(){
     let pss = false;
     loop:
     for(let i = 0 ; i < accDB.length ; i++){
-        usr = i.username == userInp.value ? true : false;
-        pss = (usr == true) ? (i.password == pssInp ? true : false) : false;
+        usr = accDB[i].username == userInp.value ? true : false;
+        pss = (usr == true) ? (accDB[i].password == pssInp.value ? true : false) : false;
         if(usr == true && pss == true){
-            realizarLogIn();
-            console.log("passou");
+            status = true;
+            window.location.replace("../../index.html#log");
             break loop;
         }
     }
@@ -494,7 +493,7 @@ const renderAccountList = async () => {
             username: account.username,
             email: account.email,
             birthdate: account.birthdate,
-            password: account.password,
+            password: account.password
         });
     })
 }
@@ -514,17 +513,22 @@ const renderProductList = async () => {
             price: product.price,
             desc: product.desc,
             image: product.image,
-            tags: product.tags,
+            tags: product.tags
         });
     })
 }
 
 // --- Render ---
 window.addEventListener('DOMContentLoaded', () => renderProductList());
-window.addEventListener('DOMContentLoaded', () => renderAccountList);
+window.addEventListener('DOMContentLoaded', () => renderAccountList());
 window.addEventListener('DOMContentLoaded', () => renderCoupons());
 window.addEventListener('DOMContentLoaded', () => renderProducts());
 window.addEventListener('DOMContentLoaded', () => listProducts());
+window.addEventListener('DOMContentLoaded', () => {
+    if (window.location.hash === "#log")
+        resetParameters();
+})
+
 
 // --- BOTÕES ---
 btnHome.addEventListener('click', toHomeSection);
