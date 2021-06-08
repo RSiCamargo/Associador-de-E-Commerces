@@ -18,9 +18,6 @@ const logIn = document.getElementById("login");
 const createAcc = document.getElementById("CriaConta");
 const userInp = document.getElementById("userInput");
 const pssInp = document.getElementById("passwordInput");
-const deslog = document.getElementById("dsc");
-const log = document.getElementById("cnt");
-const log2 = document.getElementById("cnt2");
 const logAlert = document.getElementById("logAlert");
 
 // ----- VARIÁVEIS -----
@@ -29,32 +26,13 @@ let objDB = []; //Vetor que recebe objs do banco (Dentro do ambiente de apresent
 let accDB = []; //Vetor que recebe cadastros do banco (Dentro do ambiente de apresentacao apenas)
 let objSrc = []; //Obj de itens encontrados na pesquisa
 let tagString; //String de pesquisa
-var status = localStorage.getItem("statusVal"); //log usuario
 
 // ----- FUNÇÕES -----
-/*
-if(status){
-    deslog.classList.add("d-none");
-    log.classList.remove("d-none");
-    log2.classList.remove("d-none");
-}else{
-    deslog.classList.remove("d-none");
-    log.classList.add("d-none");
-    log2.classList.add("d-none");
-}
-*/
 const resetParameters = () => {
     srcProd.innerHTML = "";
     nbRes.innerHTML = "";
     filterTag.innerHTML = "";
     objSrc = [];
-    if(status){
-        deslog.classList.add("d-none");
-        log.classList.remove("d-none");
-    }else{
-        deslog.classList.remove("d-none");
-        log.classList.add("d-none");
-    }
 }
 
 // --- Change Pag ---
@@ -290,6 +268,10 @@ function validaLogIn(){
     }
     if(usr == false || pss == false)
         logAlert.classList.remove("d-none");
+}
+
+function logOut(){
+    localStorage.setItem("statusVal", false);
 }
 
 // --- Register ---
