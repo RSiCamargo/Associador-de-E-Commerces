@@ -51,17 +51,7 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-light" style="padding: 0px">
                 <div class="container-fluid bg-dark">
                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                        <ul class="navbar-nav" style="width: 100%; justify-content: space-between">
-                            <li class="nav-item dropdown">
-                                <a style="color: #EAEDED" class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa fa-bars" aria-hidden="true"></i>
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                </ul>
-                            </li>
+                        <ul class="navbar-nav" style="width: 100%;justify-content: space-around">
                             <li class="nav-item ">
                                 <a class="nav-link active btn_products" style="color: #EAEDED" href="#">Produtos</a>
                             </li>
@@ -77,26 +67,14 @@
                             <li class="nav-item ">
                                 <a class="nav-link active" style="color: #EAEDED" href="#">E-commerces</a>
                             </li>
-                            <li class="nav-item ">
-                                <a class="nav-link active" style="color: #EAEDED" href="#">opcao aq</a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link active" style="color: #EAEDED" href="#">opcao aq</a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link active" style="color: #EAEDED" href="#">opcao aq</a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link active" style="color: #EAEDED" href="#">opcao aq</a>
-                            </li>
                         </ul>
                     </div>
                 </div>
             </nav>
         </header>
         <!-- Seção Pag. Principal -->
-        <section class="container-fluid" id="home-section" style="height:109vh; width: 100%; background-color: #EAEDED; z-index: 0"> 
-                <div class="container-fluid" style="margin-top: 5.5rem;height: 100%; width: 80%; position: absolute; z-index: 0; left: 10%; background-color: white">
+        <section class="container-fluid" id="home-section" style="height:109vh; width: 100%; background-color: #EAEDED"> 
+                <div style="margin-top: 5.5rem;height: 110vh;margin-left: 10%;width: 80%;background-color: white">
                     <div id="carouselExampleControls" class="carousel slide" style="width: 80%;margin: 0 10% 0 10%" data-bs-ride="carousel">
                         <div class="carousel-inner">
                           <div class="carousel-item active">
@@ -114,7 +92,6 @@
                           <span class="visually-hidden">Next</span>
                         </button>
                     </div>
-                        </div>
                     </div> 
                 </div>  
         </section>
@@ -137,26 +114,32 @@
             </div>
         </section>
         <!-- Seção Cupom -->
-        <section class="d-none" id="coupon-section" style="margin-top: 5.6rem ;height: 200vh; width: 100%; background-color: #EAEDED">
-            <div style="height: 200vh; width: 80%; position: absolute; left: 10%; background-color: white"> 
-                <div class="row row-cols-1 row-cols-md-6 g-4 coupons" style="display: flex; flex-flow: row wrap">
+        <section class="d-none" id="coupon-section" style="margin-top: 5.6rem ;height: 120vh; width: 100%; background-color: #EAEDED">
+            <div style="height: 120vh; width: 80%; position: absolute; left: 10%; background-color: white"> 
+                <div class="row row-cols-1 row-cols-md-6 g-4 coupons mt-4" style="display: flex; flex-flow: row wrap">
                     <!-- Recebe os cupons pela função divcoupon-->
                     
                 </div>
             </div>
         </section>
         <!-- Seção Produtos -->
-        <section class="d-none" id="products-section" style="margin-top: 5.6rem ;height: 200vh; width: 100%; background-color: #EAEDED">
-            <div style="height: 200vh; width: 80%; position: absolute; left: 10%; background-color: white">
-                <div class="products card-group" >
+        <section class="d-none" id="products-section" style="margin-top: 5.6rem ;height: 100vh; width: 100%; background-color: #EAEDED">
+            <div style="height: 100vh; width: 80%; position: absolute; left: 10%; background-color: white">
+                <div class="products card-group mt-5">
                         <!-- recebe os produtos pela função divProducts-->       
                 </div>
             </div>
         </section>
-        <!-- Seção Rodape -->
-        <section id="footer" style="z-index: 20">
+
+        <main>
+            <script src="jquery-3.5.1.min.js"></script>
+            <script src="./bootstrap/js/bootstrap.min.js"></script>
+            <script src="./src/js/script.js"></script>
+        </main>
+        
+        <section id="footer">
             <footer>
-                <div class="container-fluid bg-dark" style="height: 27vh;">
+                <div class="container-fluid bg-dark" style="height: 17rem;">
                     <div style="margin-left: 20%;"> 
                         <ul class="list-inline">
                             <li class="list-inline-item text-light mt-4" style="margin-right: 20%;font-weight: bold;font-size: 20px;">Conheça-nos</li>
@@ -164,17 +147,17 @@
                             <li class="list-inline-item text-light mt-4" style="margin-right: 20%;font-weight: bold;font-size: 20px;">Central de ajuda</li>
                         </ul>
                         <ul class="list-inline">
-                            <li class="list-inline-item text-light mt-1" style=""><a href="#" style="color: white;text-decoration: none">Sobre E-mall</a></li>
+                            <li class="list-inline-item text-light mt-1" ><a href="#" style="color: white;text-decoration: none">Sobre E-mall</a></li>
                             <li class="list-inline-item text-light mt-1" style="margin-left: 22.5%;"><a href="#" style="color: white;text-decoration: none">Cadastre seu E-commerce</a></li>
                             <li class="list-inline-item text-light mt-1" style="margin-left: 25%;"><a href="#" style="color: white;text-decoration: none">FAQ</a></li>
                         </ul>
                         <ul class="list-inline">
-                            <li class="list-inline-item text-light mt-1" style=""><a href="#" style="color: white;text-decoration: none">Carreiras</a></li>
+                            <li class="list-inline-item text-light mt-1"><a href="#" style="color: white;text-decoration: none">Carreiras</a></li>
                             <li class="list-inline-item text-light mt-1" style="margin-left: 24%;"><a href="#" style="color: white;text-decoration: none">Cadastre seus Produtos</a></li>
                             <li class="list-inline-item text-light mt-1" style="margin-left: 25.8%;"><a href="#" style="color: white;text-decoration: none">Dúvidas frequentes</a></li>
                         </ul>
                         <ul class="list-inline">
-                            <li class="list-inline-item text-light mt-1" style=""><a href="#" style="color: white;text-decoration: none">Relações</a></li>
+                            <li class="list-inline-item text-light mt-1"><a href="#" style="color: white;text-decoration: none">Relações</a></li>
                             <li class="list-inline-item text-light mt-1" style="margin-left: 24%;"><a href="#" style="color: white;text-decoration: none">Seja um associado</a></li>
                         </ul>
                     </div>
