@@ -147,6 +147,7 @@ const addSearchResults = (param) => {
                                 <div style="width: 20rem; height: 9rem; padding: 1rem 2rem;">
                                     <div style="width: 100%; height: 2rem; color: black; display: flex; justify-content: center;">${objDB[i].desc}</div>
                                     <div style="width: 100%; height: 2rem; margin: 1rem 0rem; color: black; display: flex; justify-content: center;">R$${objDB[i].price}</div>
+                                    <a class="btn btn-secondary" target="_blank" rel="noopener noreferrer" href="${objDB[i].link}">Visitar Produto</a>
                                 </div>
                             </div>
                             `
@@ -425,7 +426,7 @@ const renderProducts = async () => {
                     <h5 class="card-title text-center">${product.title}</h5>
                     <h5 class="card-text text-center">R$${product.price}</h5>
                     <p class="card-text">${product.desc}</p>
-                    <a class="btn btn-secondary" href"#">Visitar</a>
+                    <a class="btn btn-secondary" target="_blank" rel="noopener noreferrer" href="${product.link}">Visitar Produto</a>
                 </div>
             </div>
             </div>
@@ -521,6 +522,7 @@ const renderProductList = async () => {
             price: product.price,
             desc: product.desc,
             image: product.image,
+            link: product.link,
             tags: product.tags
         });
     })
