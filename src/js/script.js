@@ -481,6 +481,7 @@ const listProducts = async () => {
                     <td>R$${product.price}</td>
                     <td>${product.desc}</td>
                     <td>${product.tags}</td>
+                    <td><button class="btn btn-secondary btn-sm" type="button" id="btn-edit-nome" style=""><i class="fas fa-edit"></i></button></td>
                     </tr>
         `
     });
