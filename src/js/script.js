@@ -28,9 +28,17 @@ let objDB = []; //Vetor que recebe objs do banco (Dentro do ambiente de apresent
 let accDB = []; //Vetor que recebe cadastros do banco (Dentro do ambiente de apresentacao apenas)
 let objSrc = []; //Obj de itens encontrados na pesquisa
 let tagString; //String de pesquisa
-let status = false; //log usuario
+var status = localStorage.getItem("statusVal"); //log usuario
 
 // ----- FUNÇÕES -----
+if(status){
+    deslog.classList.add("d-none");
+    log.classList.remove("d-none");
+}else{
+    deslog.classList.remove("d-none");
+    log.classList.add("d-none");
+}
+
 const resetParameters = () => {
     srcProd.innerHTML = "";
     nbRes.innerHTML = "";
@@ -43,7 +51,6 @@ const resetParameters = () => {
         deslog.classList.remove("d-none");
         log.classList.add("d-none");
     }
-
 }
 
 // --- Change Pag ---
@@ -268,14 +275,12 @@ function validaLogIn(){
     logAlert.classList.add("d-none");
     let usr = false;
     let pss = false;
-    loop:
     for(let i = 0 ; i < accDB.length ; i++){
         usr = accDB[i].username == userInp.value ? true : false;
         pss = (usr == true) ? (accDB[i].password == pssInp.value ? true : false) : false;
         if(usr == true && pss == true){
-            status = true;
-            window.location.replace("../../index.html#log");
-            break loop;
+            localStorage.setItem("statusVal", true);
+            window.location.replace("../../index.html");  
         }
     }
     if(usr == false || pss == false)
@@ -417,7 +422,7 @@ const renderProducts = async () => {
                     <h5 class="card-title text-center">${product.title}</h5>
                     <h5 class="card-text text-center">R$${product.price}</h5>
                     <p class="card-text">${product.desc}</p>
-                    <a class="btn btn-secondary" target="_blank" rel="noopener noreferrer" href="${product.link}">Visitar</a>
+                    <a class="btn btn-secondary" href"#">Visitar</a>
                 </div>
             </div>
             </div>
@@ -524,11 +529,6 @@ window.addEventListener('DOMContentLoaded', () => renderAccountList());
 window.addEventListener('DOMContentLoaded', () => renderCoupons());
 window.addEventListener('DOMContentLoaded', () => renderProducts());
 window.addEventListener('DOMContentLoaded', () => listProducts());
-window.addEventListener('DOMContentLoaded', () => {
-    if (window.location.hash === "#log")
-        resetParameters();
-})
-
 
 // --- BOTÕES ---
 btnHome.addEventListener('click', toHomeSection);
