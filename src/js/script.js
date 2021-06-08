@@ -392,6 +392,8 @@ const createProduct = async () => {
             "Content-type": "application/json; charset=UTF-8"
           }
     });
+
+    alert("Produto Cadastrado");
 }
 
 // --- Load ---
