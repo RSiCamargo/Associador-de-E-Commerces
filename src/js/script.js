@@ -187,6 +187,10 @@ function ValidarLetras() {
     campo.value = campo.value.replace(/[^a-zA-Z]+/, '');
 }
 
+const realizarLogIn = () => {
+
+}
+
 // --- Verif ---
 //Verificar senhas 
 function verificarSenha(){
@@ -260,11 +264,12 @@ function validaLogIn(){
     for(let i = 0 ; i < accDB.length ; i++){
         usr = i.username == userInp.value ? true : false;
         pss = (usr == true) ? (i.password == pssInp ? true : false) : false;
-        if(usr == true && pss == true)
+        if(usr == true && pss == true){
+            realizarLogIn();
             break loop;
+        }
     }
 }
-
 
 // --- Register ---
 //cadastrar conta no banco
@@ -464,7 +469,7 @@ const listProducts = async () => {
 // --- Sync ---
 //Sync cadastros banco NAO APLICAVEL, APENAS AMBIENTE DE APRESENTACAO
 const renderAccountList = async () => {
-    let uri = 'http://localhost:3000/products';
+    let uri = 'http://localhost:3000/accounts';
 
     const res = await fetch(uri);
     const accounts = await res.json();
@@ -484,7 +489,7 @@ const renderAccountList = async () => {
 
 //Sync produtos banco NAO APLICAVEL, APENAS AMBIENTE DE APRESENTACAO
 const renderProductList = async () => {
-    let uri = 'http://localhost:3000/accounts';
+    let uri = 'http://localhost:3000/products';
 
     const res = await fetch(uri);
     const products = await res.json();
