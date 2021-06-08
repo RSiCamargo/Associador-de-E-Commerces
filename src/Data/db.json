@@ -108,13 +108,13 @@
       ]
     },
     {
+      "id": 3,
       "title": "Calça Jeans",
       "price": "199,90",
       "desc": "Calça jeans simples",
       "link": "https://www.riachuelo.com.br/calca-jeans-color-12286532_sku?gclid=Cj0KCQjwhr2FBhDbARIsACjwLo2J7lCWYX7h7hYkw2LYVFRoQ1KH5LQHfZSF-jhdvuRytuCBzLqfd70aAvEPEALw_wcB",
       "image": "./src/img/jeans.png",
-      "tags": "calça",
-      "id": 3
+      "tags": ["calça", "calca"]
     }
   ]
 }
