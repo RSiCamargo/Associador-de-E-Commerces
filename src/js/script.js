@@ -18,7 +18,9 @@ const logIn = document.getElementById("login");
 const createAcc = document.getElementById("CriaConta");
 const userInp = document.getElementById("userInput");
 const pssInp = document.getElementById("passwordInput");
-
+const deslog = document.getElementById("dsc");
+const log = document.getElementById("cnt");
+const logAlert = document.getElementById("logAlert");
 
 // ----- VARIÁVEIS -----
 let tagArr = []; //Vetor com tags buscadas
@@ -188,7 +190,13 @@ function ValidarLetras() {
 }
 
 const realizarLogIn = () => {
-
+    deslog.classList.add("d-none");
+    log.classList.remove("d-none");
+    window.location.replace("../../index.html");
+}
+const realizarLogOut = () => {
+    deslog.classList.remove("d-none");
+    log.classList.add("d-none");
 }
 
 // --- Verif ---
@@ -258,17 +266,21 @@ function validaCadastroProdutos(){
 
 //Verifica dados de login (DENTRO DO AMBIENTE DE APRESENTACAO APENAS)
 function validaLogIn(){
-    usr = false;
-    pss = false;
+    logAlert.classList.add("d-none");
+    let usr = false;
+    let pss = false;
     loop:
     for(let i = 0 ; i < accDB.length ; i++){
         usr = i.username == userInp.value ? true : false;
         pss = (usr == true) ? (i.password == pssInp ? true : false) : false;
         if(usr == true && pss == true){
             realizarLogIn();
+            console.log("passou");
             break loop;
         }
     }
+    if(usr == false || pss == false)
+        logAlert.classList.remove("d-none");
 }
 
 // --- Register ---
@@ -475,7 +487,7 @@ const renderAccountList = async () => {
     const accounts = await res.json();
     
     accounts.forEach(account => {
-        acc.push(
+        accDB.push(
             {
             id: account.id,
             name: account.name,

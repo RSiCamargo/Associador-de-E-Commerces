@@ -20,11 +20,11 @@
     <body>
         <header>
             <div class="" id="login">
-                <form class="container p-3 my-5 border bg-light" style="width: 35rem;border-radius: 1rem;">
+                <div class="container p-3 my-5 border bg-light" style="width: 35rem;border-radius: 1rem;">
                     <div class="mb-3" style="width: 30rem;">
-                        <h2>Realizar Login</h2>
-                        <label for="exampleInputEmail1" class="form-label">Usuário</label>
-                        <input type="email" required class="form-control shadow-none" style="border-color: grey;" id="userInput" aria-describedby="emailHelp">
+                        <h2>Login</h2>
+                        <label class="form-label">Usuário</label>
+                        <input type="username" required class="form-control shadow-none" style="border-color: grey;" id="userInput">
                         <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Senha</label>
                         <input type="password" required class="form-control shadow-none" style="border-color: grey;" id="passwordInput">
@@ -33,10 +33,12 @@
                         <input type="checkbox" class="form-check-input shadow-none" id="exampleCheck1" >
                         <label class="form-check-label" for="exampleCheck1">Lembrar conta</label>
                         </div>
-                        <button type="submit" class="btn btn-secondary shadow-none">Enviar</button>
-                        <p class="text-center mt-5">Ainda não possui conta? <a href="#" onclick="toCreateAccSection()" >Registre aqui</a></p>
+                        <button type="button" class="btn btn-secondary shadow-none" onclick="validaLogIn()">Entrar</button>
+                        <div id="logAlert" style="margin-left: 4rem; color: crimson" class="form-text d-none">Por favor, verifique o usuário/senha e tente novamente.</div>
+                        <p class="text-center mt-5">Ainda não possui conta? <a href="#" onclick="toCreateAccSection()">Registre aqui</a></p>
                         <p class="text-center mt-1"><a href="../../index.html">Voltar a tela principal</a></p>
-                </form>
+                    </div>
+                </div>
             </div>
         </header>
             <div class="d-none" id="CriaConta">
