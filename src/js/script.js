@@ -20,6 +20,7 @@ const userInp = document.getElementById("userInput");
 const pssInp = document.getElementById("passwordInput");
 const deslog = document.getElementById("dsc");
 const log = document.getElementById("cnt");
+const log2 = document.getElementById("cnt2");
 const logAlert = document.getElementById("logAlert");
 
 // ----- VARIÁVEIS -----
@@ -34,9 +35,11 @@ var status = localStorage.getItem("statusVal"); //log usuario
 if(status){
     deslog.classList.add("d-none");
     log.classList.remove("d-none");
+    log2.classList.remove("d-none");
 }else{
     deslog.classList.remove("d-none");
     log.classList.add("d-none");
+    log2.classList.add("d-none");
 }
 
 const resetParameters = () => {
