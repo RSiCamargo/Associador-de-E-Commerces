@@ -401,7 +401,7 @@ const renderProducts = async () => {
                     <h5 class="card-title text-center">${product.title}</h5>
                     <h5 class="card-text text-center">R$${product.price}</h5>
                     <p class="card-text">${product.desc}</p>
-                    <a class="btn btn-secondary" href"#">Visitar</a>
+                    <a class="btn btn-secondary" target="_blank" rel="noopener noreferrer" href="${product.link}">Visitar</a>
                 </div>
             </div>
             </div>
